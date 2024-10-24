@@ -62,7 +62,7 @@ function Signup() {
                 }
                 setLoading(false)
             } catch (err) {
-                navigate('/error')
+                toast.error("Internal Server Error!");
             }
         }
 
