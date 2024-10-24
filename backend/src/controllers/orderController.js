@@ -2,12 +2,14 @@ import Order from "../models/Order.js";
 import { SMTPClient } from 'emailjs';
 import ejs from 'ejs';
 import path from "path";
+import fs from 'fs'
 import Payment from '../models/Payment.js'
+
+const orderEmailTemplatePath = path.join(process.cwd(), 'public', 'orderEmail.ejs');
 
 const sendEmail = async (value) => {
     
     try {
-
     const server = new SMTPClient({
         user: process.env.GMAIL_USER,
         password: process.env.GMAIL_PASSWORD,
@@ -16,9 +18,8 @@ const sendEmail = async (value) => {
         ssl: true,
     });
 
-    const orderEmailTemplatePath = path.join(process.cwd(), 'public', 'orderEmail.ejs');
-
-        const htmlContent = await ejs.renderFile(orderEmailTemplatePath, {
+    const templateContent = fs.readFileSync(orderEmailTemplatePath, 'utf8');
+        const htmlContent = await ejs.renderFile(templateContent, {
             username: value.username,
             profileLink: value.profileLink,
             orderId: value.orderId,
