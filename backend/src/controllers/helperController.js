@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt';
 import { SMTPClient } from 'emailjs';
 import ejs from 'ejs';
 import path from "path";
-import { fileURLToPath } from 'url';
 
 // otp create
 const otpCreated = () => {
@@ -78,10 +77,8 @@ const sendEmail = async (req, res) => {
         ssl: true,
     });
 
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
 
-    const otpEmailTemplate = path.join(__dirname, '../views/otpEmail.ejs');
+    const otpEmailTemplate = path.join(process.cwd(), 'public', 'otpEmail.ejs');
 
     try {
 

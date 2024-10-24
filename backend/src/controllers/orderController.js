@@ -2,7 +2,6 @@ import Order from "../models/Order.js";
 import { SMTPClient } from 'emailjs';
 import ejs from 'ejs';
 import path from "path";
-import { fileURLToPath } from 'url';
 import Payment from '../models/Payment.js'
 
 const sendEmail = async (value) => {
@@ -14,14 +13,12 @@ const sendEmail = async (value) => {
         ssl: true,
     });
 
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-
-    const orderEmailTemplate = path.resolve(__dirname, '../views/orderEmail.ejs');
+   // Build the path to the public/orderEmail.ejs file
+   const orderEmailTemplatePath = path.join(process.cwd(), 'public', 'orderEmail.ejs');
 
     try {
 
-        const htmlContent = await ejs.renderFile(orderEmailTemplate, {
+        const htmlContent = await ejs.renderFile(orderEmailTemplatePath, {
             username: value.username,
             profileLink: value.profileLink,
             orderId: value.orderId,
