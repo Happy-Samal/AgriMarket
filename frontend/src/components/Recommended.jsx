@@ -9,8 +9,10 @@ function HomeRecommended() {
     const navigate = useNavigate()
     const [recommendedInfo, setRecommendedInfo] = useState([])
     const [category, setCategory] = useState([])
+    const [loading , setLoading] = useState(false)
 
     const getCategoryList = async () => {
+        setLoading(true)
         const d1 = await getCart()
         const d2 = await getWishlist()
 
@@ -20,15 +22,18 @@ function HomeRecommended() {
         });
         arr = [...new Set(arr)];
         setCategory(arr)
+        setLoading(false)
     }
 
     const getItems = async () => {
+        setLoading(true)
         let arr = []
         for (const item of category) {
             const data = await getProducts({value:item})
             arr = [...arr, ...data]
         }
         setRecommendedInfo(arr)
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -48,8 +53,13 @@ function HomeRecommended() {
     return (
         <>
             {recommendedInfo.length != 0 && 
-            <div className='flex flex-col gap-2 md:gap-4 bg-white text-black px-2 md:px-4 py-2'>
+            <div className='flex flex-col gap-2 md:gap-4 bg-white text-black px-2 md:px-4 py-2 relative min-h-32'>
             <h1 className='font-bold text-[14px] md:text-[18px] lg:text-[22px]'>Recommended products</h1>
+            {loading && ( 
+                    <div className="flex justify-center items-center absolute inset-0"> 
+                        <img src="/loading.gif" alt="loading" className='w-8 md:w-12' />
+                    </div>
+                )}
             <div className='flex md:gap-3 gap-2 overflow-x-auto scrollbar-hide'>
                 {recommendedInfo?.map((item) => {
                     return <div key={item._id} onClick={()=>{navigate(`/product?pId=${item._id}&pCgy=${item.category}&pName=${item.name}`)}} className="bg-gray-200 flex flex-col gap-1 md:gap-2 p-2 cursor-pointer " >
@@ -74,10 +84,13 @@ function HomeRecommended() {
 function ProductPageRecommended({category}) {
     const navigate = useNavigate()
     const [recommendedInfo, setRecommendedInfo] = useState([])
+    const [loading , setLoading] = useState(false)
 
     const getItems = async()=>{
+        setLoading(true)
         const data = await getProducts({value:category})
         setRecommendedInfo(data)
+        setLoading(false)
     }
     useEffect(() => {
       getItems()
@@ -85,8 +98,13 @@ function ProductPageRecommended({category}) {
     
     return(
         <>
-        <div className='flex flex-col gap-2 md:gap-4 bg-white text-black px-2 md:px-4 py-2'>
+        <div className='flex flex-col gap-2 md:gap-4 bg-white text-black px-2 md:px-4 py-2 relative min-h-32'>
                 <h1 className='font-bold text-[14px] md:text-[18px] lg:text-[22px]'>Recommended products</h1>
+                {loading && ( 
+                    <div className="flex justify-center items-center absolute inset-0"> 
+                        <img src="/loading.gif" alt="loading" className='w-8 md:w-12' />
+                    </div>
+                )}
                 <div className='flex md:gap-3 gap-2 overflow-x-auto scrollbar-hide'>
                     {recommendedInfo?.map((item) => {
                         return <div key={item._id} onClick={()=>{navigate(`/product?pId=${item._id}&pCgy=${item.category}&pName=${item.name}`)}} className="bg-gray-200 flex flex-col gap-1 md:gap-2 p-2 cursor-pointer " >
@@ -105,7 +123,6 @@ function ProductPageRecommended({category}) {
             </div>
         </>
     )
-
 }
 
 export  {HomeRecommended , ProductPageRecommended}

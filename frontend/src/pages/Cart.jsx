@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
-import { getCart, removeFromCart , updateCart} from '../helpers/cart';
+import { getCart, removeFromCart, updateCart } from '../helpers/cart';
 import { toast } from 'react-toastify';
 
 function Cart() {
@@ -10,6 +10,8 @@ function Cart() {
   const id = searchParams.get('id');
   const [cartInfo, setCartInfo] = useState([]);
   const [priceDetails, setPriceDetails] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [loader, setLoader] = useState(false)
 
 
   useEffect(() => {
@@ -29,12 +31,13 @@ function Cart() {
   }
 
   const getCartInfo = async () => {
+    setLoading(true)
     const data = await getCart();
     setCartInfo(data);
     let price = 0;
     let discount = 0;
     data.forEach((item) => {
-      if(item.product == null){
+      if (item.product == null) {
         removeBtnClick(item._id)
       }
       price += (item.product?.price) * item.itemQuantity
@@ -43,6 +46,7 @@ function Cart() {
     let delivery = price >= 500 ? 0 : 49
     let total = price - discount + delivery;
     setPriceDetails({ price, discount, total, delivery })
+    setLoading(false)
   };
 
   useEffect(() => {
@@ -51,9 +55,9 @@ function Cart() {
 
 
 
-  const itemQuantityChange = async ({id,itemQuantity}) => {
-    if(itemQuantity>0){
-      const data = await updateCart({id:id,itemQuantity:itemQuantity})
+  const itemQuantityChange = async ({ id, itemQuantity }) => {
+    if (itemQuantity > 0) {
+      const data = await updateCart({ id: id, itemQuantity: itemQuantity })
       if (data.success) {
         toast.success(data.message)
         setCartInfo(data?.carts?.products || [])
@@ -66,28 +70,34 @@ function Cart() {
   const itemClick = (item) => {
     navigate(`/product?pId=${item._id}&pCgy=${item.category}&pName=${item.name}`)
   }
-  const placeOrderClick = ()=>{
-    const cartItems = cartInfo.map((item)=>{
-      return {product:item.product?._id , quantity:item.itemQuantity ,price:(item.product?.price - item.product?.discount / 100 * item.product?.price)*item.itemQuantity }
+  const placeOrderClick = () => {
+    setLoader(true)
+    const cartItems = cartInfo.map((item) => {
+      return { product: item.product?._id, quantity: item.itemQuantity, price: (item.product?.price - item.product?.discount / 100 * item.product?.price) * item.itemQuantity }
     })
-    navigate('/checkout',{
-      state:{cartItems:cartItems}
+    setLoader(false)
+    navigate('/checkout', {
+      state: { cartItems: cartItems }
     })
   }
   return (
     <>
-     <Helmet>
+      <Helmet>
         <title>My Cart</title>
         <meta name="description" content="AgriMarket - From Farm to Your Table, Fresh and Direct " />
       </Helmet>
 
       <div className="flex flex-col md:flex-row gap-6 bg-gray-200 px-6 py-8 md:px-10 md:py-10 min-h-[100vh]">
         {/* Left Section: Cart Items */}
-        <div className="min-h-[50vh] w-full md:w-[60%] bg-white rounded-md flex flex-col gap-4 p-4 md:p-6">
+        <div className="min-h-[50vh] w-full md:w-[60%] bg-white rounded-md flex flex-col gap-4 p-4 md:p-6 relative">
           <h1 className="md:text-xl text-md font-semibold border-b-2 pb-4">My Cart ({cartInfo?.length})</h1>
 
           {cartInfo?.length == 0 && <span className='font-semibold'>No items to display</span>}
-
+          {loading && (
+            <div className="flex justify-center items-center absolute inset-0">
+              <img src="/loading.gif" alt="loading" className='w-8 md:w-12' />
+            </div>
+          )}
           {/* Cart Item */}
           {cartInfo?.map((item) => {
             return <div key={item._id} className="border-b-2 pb-4 flex flex-col gap-2   ">
@@ -109,9 +119,9 @@ function Cart() {
 
                 {/* Quantity Selector */}
                 <div className="flex items-center border rounded-md w-fit lg:text-[16px] text-[14px] font-bold">
-                  <button  onClick={()=>{itemQuantityChange({id:item._id,itemQuantity:item.itemQuantity-1})}} className="px-2 py-1  text-green-600 hover:bg-gray-300">-</button>
+                  <button onClick={() => { itemQuantityChange({ id: item._id, itemQuantity: item.itemQuantity - 1 }) }} className="px-2 py-1  text-green-600 hover:bg-gray-300">-</button>
                   <span className="px-4 ">{item.itemQuantity}</span>
-                  <button  onClick={()=>{itemQuantityChange({id:item._id,itemQuantity:item.itemQuantity+1})}} className="px-2 py-1  text-green-600 hover:bg-gray-300">+</button>
+                  <button onClick={() => { itemQuantityChange({ id: item._id, itemQuantity: item.itemQuantity + 1 }) }} className="px-2 py-1  text-green-600 hover:bg-gray-300">+</button>
                 </div>
                 <button onClick={() => { removeBtnClick(item._id) }} className='hover:text-green-500 font-bold  lg:text-[14px] text-[12px]'>
                   REMOVE
@@ -142,8 +152,11 @@ function Cart() {
               <span>Total Amount</span>
               <span>₹{priceDetails?.total}</span>
             </div>
-            <button onClick={()=>{placeOrderClick()}} className="bg-green-500 text-white font-semibold py-2 rounded-md w-full">
-              Place Order
+            <button disabled={loader} onClick={() => { placeOrderClick() }} className="bg-green-500 text-white font-semibold py-2 rounded-md w-full flex justify-center items-center">
+            {loader ? 
+                    <img src="/loader.gif" alt="loading" className='w-5 md:w-6 ' /> :
+                    <span>Place Order</span>
+                    }
             </button>
           </>}
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { getFarmerOrderProduct , updateOrder} from '../helpers/order.js'
+import { getFarmerOrderProduct, updateOrder } from '../helpers/order.js'
 import { convertToDate } from '../helpers/convertToDate.js'
 
 function FarmerOrder() {
@@ -11,11 +11,14 @@ function FarmerOrder() {
     const [edit, setEdit] = useState(false)
     const orderStatus = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
     const [formInfo, setFormInfo] = useState({})
+    const [loading, setLoading] = useState(false)
 
 
     const getOrderInfo = async () => {
+        setLoading(true)
         const data = await getFarmerOrderProduct();
         setOrderInfo(data.orderProducts || [])
+        setLoading(false)
     };
 
     useEffect(() => {
@@ -25,20 +28,20 @@ function FarmerOrder() {
     const itemClick = (item) => {
         navigate(`/product?pId=${item._id}&pCgy=${item.category}&pName=${item.name}`)
     }
-    const editClick = (item)=>{
+    const editClick = (item) => {
         setEdit(true)
         setFormInfo(item)
     }
-    const inputChange = (e)=>{
-        setFormInfo({...formInfo , [e.target.name]:e.target.value})
+    const inputChange = (e) => {
+        setFormInfo({ ...formInfo, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = async(e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const data = await updateOrder(formInfo)
-        if(data.success){
+        if (data.success) {
             toast.success(data.message)
-        }else{
+        } else {
             toast.error(data.message)
         }
         await getOrderInfo()
@@ -52,19 +55,22 @@ function FarmerOrder() {
                 <meta name="description" content="AgriMarket - From Farm to Your Table, Fresh and Direct " />
             </Helmet>
 
-            <div className='flex flex-col gap-4 items-center md:items-baseline h-[150vh]' >
+            {loading && <div className='h-full w-full absolute left-0 top-0 z-20 md:pt-64 pt-44  font-bold text-[24px] flex items-center text-white bg-black bg-opacity-80 flex-col '>
+                <img src="/loading.gif" alt="sending" className='w-[70px]' />
+            </div>}
+
+            <div className='flex flex-col gap-4 items-center md:items-baseline h-[150vh] relative' >
                 <h1 className="md:text-xl text-md font-semibold  border-b-2 pb-4">Ordered Product ({orderInfo?.length})</h1>
 
                 {orderInfo?.length == 0 && <span className='font-semibold md:text-[18px]'>No items to display</span>}
-
                 {/* Order Item */}
                 <div className='overflow-y-auto scrollbar-rounded2 flex flex-col gap-3 px-2'>
                     {orderInfo?.map((item) => {
                         return <div key={item._id} className='bg-gray-200 flex flex-col gap-8 p-2 rounded-md'>
                             <div className='flex justify-between items-center md:px-3 gap-8 text-black font-bold lg:text-lg text-[12px]'>
                                 <h1 className='text-black font-bold '>order ID : {item.orderId}</h1>
-                                {(item?.orderStatus == 'Cancelled' || item?.orderStatus == 'Delivered')?'':
-                                <img src="/edit.gif" alt="edit" onClick={() => {editClick(item) }} className='h-5 cursor-pointer' />}
+                                {(item?.orderStatus == 'Cancelled' || item?.orderStatus == 'Delivered') ? '' :
+                                    <img src="/edit.gif" alt="edit" onClick={() => { editClick(item) }} className='h-5 cursor-pointer' />}
                             </div>
                             <div className="border-b-2 pb-2 lg:pb-4 flex flex-col gap-1 pr-2 lg:pr-8 text-black ">
                                 <div className="flex gap-4">
@@ -84,9 +90,9 @@ function FarmerOrder() {
 
                             </div>
                             <div className='flex justify-between items-center md:px-3 gap-8 text-blue-600 font-bold lg:text-lg text-[12px]'>
-                            {(item?.orderStatus == 'Cancelled' || item?.orderStatus == 'Delivered')?<div></div>:
-                                <h2>Delivery Date : {item?.deliveryDate}</h2>}
-                                <h2 className={`${item?.orderStatus == 'Cancelled' ? 'text-red-600':''} ${item?.orderStatus == 'Delivered'?'text-green-600':''}`}>Order Status  : {item?.orderStatus}</h2>
+                                {(item?.orderStatus == 'Cancelled' || item?.orderStatus == 'Delivered') ? <div></div> :
+                                    <h2>Delivery Date : {item?.deliveryDate}</h2>}
+                                <h2 className={`${item?.orderStatus == 'Cancelled' ? 'text-red-600' : ''} ${item?.orderStatus == 'Delivered' ? 'text-green-600' : ''}`}>Order Status  : {item?.orderStatus}</h2>
                             </div>
                         </div>
                     })}
@@ -98,7 +104,7 @@ function FarmerOrder() {
                 <div className=' bg-white w-full h-full inset-0 absolute px-5 py-20 md:px-20 justify-center flex'>
                     <img src="/cross.gif" alt="cross" onClick={() => { setEdit(false) }} className='w-7 cursor-pointer absolute right-2 top-2' />
                     <form onSubmit={handleSubmit} className='flex flex-col gap-4 text-black relative md:w-3/4 '>
-                    <h1 className='text-black font-bold lg:text-lg text-sm'>order ID : {formInfo?.orderId}</h1>
+                        <h1 className='text-black font-bold lg:text-lg text-sm'>order ID : {formInfo?.orderId}</h1>
                         <div className='flex flex-col gap-2'>
                             <label htmlFor="deliveryDate">Delivery Date :</label>
                             <input type="text" name='deliveryDate' id='deliveryDate' value={formInfo?.deliveryDate || ''} onChange={inputChange} placeholder='eg - 22 Oct 2024' className='px-4 py-1 md:py-2 rounded-md border-2  border-black relative w-full' />

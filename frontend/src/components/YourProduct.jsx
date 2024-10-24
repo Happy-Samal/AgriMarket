@@ -48,7 +48,7 @@ function YourProduct() {
   return (
     <>
       {loading && <div className='h-full w-full absolute left-0 top-0 z-20 md:pt-64 pt-44  font-bold text-[24px] flex items-center text-white bg-black bg-opacity-80 flex-col '>
-        <img src="/loading.gif" alt="sending" className='w-[100px]' />
+        <img src="/loading.gif" alt="sending" className='w-[70px]' />
       </div>}
 
 

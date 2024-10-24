@@ -15,6 +15,7 @@ const Checkout = () => {
   const { product, quantity, price, cartItems } = location.state || {};
   const [formInfo, setFormInfo] = useState({})
   const [loading, setLoading] = useState(false)
+  const [loader , setLoader] = useState(false)
 
   useEffect(() => {
     if (loginUser) {
