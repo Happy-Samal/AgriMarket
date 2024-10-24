@@ -27,28 +27,22 @@ function Home() {
       </Helmet>
 
 
-      <div className='flex flex-col gap-4 text-white  '>
+      <div className='flex flex-col gap-4 text-white overflow-x-hidden '>
 
-        <div className='flex flex-col gap-2 lg:px-10 md:px-6 px-2'>
+        <div className='flex flex-col gap-3 lg:px-10 md:px-6 px-2 min-h-20 py-2 '>
+
           {/* home nav bar */}
-          <div className='h-24 mt-2 bg-white flex md:gap-20 px-10 gap-5 lg:justify-center items-center overflow-x-auto scrollbar-hide text-gray-700 font-semibold py-2'>
+          <div className=' mt-2 bg-white flex md:gap-20 px-10 gap-8 lg:justify-center items-center overflow-x-auto scrollbar-hide text-gray-700 font-semibold py-2'>
             {category.map((item, index) => {
               return <div key={index} onClick={() => { navigate(`/search?query=${item}`) }} className='flex flex-col cursor-pointer items-center'>
-                <img src={`/${item}.png`} alt={item} className='w-[60px]' />
+                <img src={`/${item}.png`} alt={item} className='md:w-[60px] w-10' />
                 <h1 className='md:text-lg text-sm'>{item}</h1>
               </div>
             })}
           </div>
 
-
-        </div>
-
-
-        {/* banner section */}
-        <div className='flex flex-col gap-4 text-white lg:px-10 md:px-6 px-2'>
-          <div className="w-full relative">
-
-
+           {/* banner section */}
+        <div className="w-full relative ">
           <Carousel
               showArrows={true}
               autoPlay
@@ -67,6 +61,7 @@ function Home() {
               ))}
             </Carousel>
           </div>
+
         </div>
 
         {/* product section */}

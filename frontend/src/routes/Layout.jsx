@@ -35,7 +35,7 @@ function Layout() {
               :
               <>
                 <Navbar />
-                <main className='min-h-[100vh] pt-24'>
+                <main className='min-h-[100vh] pt-24 overflow-x-hidden'>
                   <Outlet />
                 </main>
                 <Footer />
