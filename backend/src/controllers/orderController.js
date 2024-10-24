@@ -2,25 +2,22 @@ import Order from "../models/Order.js";
 import { SMTPClient } from 'emailjs';
 import ejs from 'ejs';
 import path from "path";
-import fs from 'fs'
 import Payment from '../models/Payment.js'
 
-const orderEmailTemplatePath = path.resolve('public', 'orderEmail.ejs');
-
-
 const sendEmail = async (value) => {
-    
-    try {
+
     const server = new SMTPClient({
         user: process.env.GMAIL_USER,
         password: process.env.GMAIL_PASSWORD,
         host: 'smtp.gmail.com',
-        port: 465,
         ssl: true,
     });
 
-    const templateContent = fs.readFileSync(orderEmailTemplatePath, 'utf8');
-        const htmlContent = await ejs.renderFile(templateContent, {
+    const orderEmailTemplate = path.join(process.cwd(), 'public', 'orderEmail.ejs');
+
+    try {
+
+        const htmlContent = await ejs.renderFile(orderEmailTemplate, {
             username: value.username,
             profileLink: value.profileLink,
             orderId: value.orderId,
@@ -39,14 +36,12 @@ const sendEmail = async (value) => {
                 { data: htmlContent, alternative: true }
             ]
         });
-
         return {
             success: true,
             message: 'Email Sent Successfully!',
             sent: true
         }
     } catch (err) {
-        console.log("Error in send order email", err)
         return {
             success: false,
             message: "Internal Server Error!",
@@ -70,8 +65,8 @@ const addOrder = async (req, res) => {
             name: formInfo.username,
             email: formInfo.email
         })
-
-        const paymentInfo = await Payment.create({ amount: totalAmount, orderId: orderInfo._id, paymentMethod: formInfo.paymentMethod })
+       
+        const paymentInfo = await Payment.create({amount:totalAmount , orderId:orderInfo._id , paymentMethod:formInfo.paymentMethod})
 
         const populatedOrder = await Order.findById(orderInfo._id)
             .populate({
