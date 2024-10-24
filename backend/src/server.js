@@ -59,6 +59,7 @@ app.get('/', (req, res) => {
 })
 
 
+// web socket
 io.on('connection', (socket) => {
   console.log('users connected');
 
