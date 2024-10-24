@@ -23,7 +23,6 @@ function Chat() {
     const sender = searchParams.get('sender');
     const [receiverName, setReceiverName] = useState('')
     const [receiverOnline, setReceiverOnline] = useState({})
-    const [loading, setLoading] = useState(false)
     const [loader, setLoader] = useState(false)
 
     useEffect(() => {
@@ -43,10 +42,8 @@ function Chat() {
     }
     const getChats = async () => {
         if (receiver != null) {
-            setLoading(true)
             const res = await getChat(receiver);
             setMessages(res?.chats || [])
-            setLoading(false)
         } else {
             setMessages([])
         }
@@ -265,11 +262,6 @@ function Chat() {
 
                     {/* chat box */}
                     <div ref={scrollRef} className='flex flex-col gap-8 px-4 py-8 relative h-[80%] bg-[#18171d] overflow-y-auto scrollbar-rounded2 transition-all duration-700 overflow-x-hidden'>
-                        {loading && (
-                            <div className="flex justify-center items-center absolute inset-0">
-                                <img src="/loader.gif" alt="loading" className='w-12 md:w-16 invert' />
-                            </div>
-                        )}
                         {messages?.length == 0 ? <div className='flex self-center absolute top-1/2 md:text-[20px]'>{receiver == null ? 'Welcome to AgriMarket' : `Chat With ${receiverName}`}</div> : <div className='bg-[#211f2c] rounded-md px-2 py-1 flex self-center'>🔒 Messages are end-to-end encrypted .No one outside of this chat, not even AgriMarket, can read to them.</div>}
                         {/* Display all messages (Receiver & Sender) */}
                         {messages?.map((item, index) => {
