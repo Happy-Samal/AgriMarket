@@ -55,8 +55,9 @@ const login = async (req, res) => {
 
     res.status(200).cookie('agrimarketT', token, {
         httpOnly: true,
-        secure: true,
-        maxAge: 7 * 24 * 60 * 60 * 1000,
+        secure: true, 
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+        sameSite: 'None' 
     }).json({
         success: true,
         message: 'Login Successfully!',

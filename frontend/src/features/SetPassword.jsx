@@ -104,7 +104,7 @@ function SetPassword() {
                 </div>
               </div>
               <div className='flex flex-col gap-5'>
-              <button disabled={loading} type='submit' className='px-2 py-1.5  bg-green-600 rounded-full text-white'>
+              <button disabled={loading} type='submit' className='px-2 py-1.5  bg-green-600 rounded-full text-white flex items-center justify-center'>
                 {loading ?
                     <img src="/loader.gif" alt="loading" className='w-5 md:w-6 ' />
                     :
