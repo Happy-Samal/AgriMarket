@@ -35,7 +35,7 @@ function Home() {
           <div className=' mt-2 bg-white flex md:gap-20 px-10 gap-8 lg:justify-center items-center overflow-x-auto scrollbar-hide text-gray-700 font-semibold py-2'>
             {category.map((item, index) => {
               return <div key={index} onClick={() => { navigate(`/search?query=${item}`) }} className='flex flex-col cursor-pointer items-center'>
-                <img src={`/${item}.png`} alt={item} className='md:w-[60px] w-10' />
+                <img src={`/${item}.png`} alt={item} className='md:w-[60px] w-10 duration-300 ease-in-out hover:scale-110' />
                 <h1 className='md:text-lg text-sm'>{item}</h1>
               </div>
             })}
