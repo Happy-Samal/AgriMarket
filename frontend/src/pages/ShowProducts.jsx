@@ -158,7 +158,7 @@ function ShowProducts() {
                 </div>
 
                 {loading ? ( 
-                    <div className="flex justify-center items-center absolute inset-0"> 
+                    <div className="flex justify-center items-center absolute inset-0 top-10"> 
                         <img src="/loader.gif" alt="loading" className='w-16 md:w-20 ' />
                     </div>):
                     filteredProducts.length == 0 ? <h2 className="text-xl text-white font-semibold">No Items found</h2>
