@@ -134,8 +134,8 @@ function Product() {
                     wishlistInfo?.isWishlist ? "❤️" : "🤍"
                     }
                 </button>
-                <div className='flex w-full justify-around'>
-                  <button disabled={loader} onClick={() => { cartBtnClick() }} className='flex gap-2 items-center bg-green-500 text-[10px] lg:text-[14px]  lg:px-5 py-1 px-2 rounded-md cursor-pointer relative w-[40%]'>
+                <div className='flex w-full justify-around gap-3 md:gap-5'>
+                  <button disabled={loader} onClick={() => { cartBtnClick() }} className='flex gap-2 items-center bg-green-500 text-[9px] lg:text-[14px]  lg:px-5 py-1 px-2 rounded-md cursor-pointer relative justify-center w-1/2 min-h-10'>
                     {loader ? 
                     <img src="/loader.gif" alt="loading" className='w-5 md:w-6 ' /> :
                     <>
@@ -144,7 +144,7 @@ function Product() {
                     </>
                     }
                   </button>
-                  <button onClick={() => { buyBtnClick() }} className='flex gap-2 items-center bg-green-500 text-[10px] lg:text-[14px] lg:px-5 py-1 px-2 rounded-md cursor-pointer relative w-[40%]'>
+                  <button onClick={() => { buyBtnClick() }} className='flex gap-2 items-center bg-green-500 text-[10px] lg:text-[14px] lg:px-5 py-1 px-2 rounded-md cursor-pointer relative  justify-center w-1/2 min-h-10'>
                     <img src="/buy.gif" alt="buy" className='lg:w-6 w-4 invert' />
                     <span>BUY NOW</span>
                   </button>
