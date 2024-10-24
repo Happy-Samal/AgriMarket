@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: all 200ms eas-in-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* for body and green scrollbar*/
+.scrollbar-rounded {
+  @apply overflow-y-auto;
+}
+
+.scrollbar-rounded::-webkit-scrollbar {
+  width: 4px;
+  height: 50px;
+}
+
+.scrollbar-rounded::-webkit-scrollbar-thumb {
+  @apply bg-green-500 rounded-full;
+}
+
+/* white scroll bar */
+.scrollbar-rounded2 {
+  @apply overflow-y-auto;
+}
+
+.scrollbar-rounded2::-webkit-scrollbar {
+  width: 2px;
+  height: 50px;
+}
+
+.scrollbar-rounded2::-webkit-scrollbar-thumb {
+  @apply bg-white rounded-full;
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for all other browsers */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.bg-url1 {
+  background-image: url('/notfound.gif');
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.bg-url2 {
+  background-image: url('/orderConfirmed.gif');
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
