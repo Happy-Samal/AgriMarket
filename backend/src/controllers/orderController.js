@@ -17,7 +17,7 @@ const sendEmail = async (value) => {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
 
-    const orderEmailTemplate = path.join(__dirname, '../views/orderEmail.ejs');
+    const orderEmailTemplate = path.resolve(__dirname, '../views/orderEmail.ejs');
 
     try {
 
