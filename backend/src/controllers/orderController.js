@@ -5,7 +5,10 @@ import path from "path";
 import Payment from '../models/Payment.js'
 
 const sendEmail = async (value) => {
+    
+    try {
 
+    console.log("create server")
     const server = new SMTPClient({
         user: process.env.GMAIL_USER,
         password: process.env.GMAIL_PASSWORD,
@@ -13,12 +16,14 @@ const sendEmail = async (value) => {
         port: 465,
         ssl: true,
     });
+    console.log("create server successfully")
 
-    // Build the path to the public/orderEmail.ejs file
+
+    console.log('Current working directory:', process.cwd());
     const orderEmailTemplatePath = path.join(process.cwd(), 'public', 'orderEmail.ejs');
+    console.log('Trying to read EJS template from:', orderEmailTemplatePath);
 
-    try {
-
+    console.log('Attempting to render the email template...');
         const htmlContent = await ejs.renderFile(orderEmailTemplatePath, {
             username: value.username,
             profileLink: value.profileLink,
@@ -29,7 +34,7 @@ const sendEmail = async (value) => {
             products: value.products,
             name: value.name
         })
-
+        console.log('Email template rendered successfully.');
         const message = await server.sendAsync({
             from: `AgriMarket Team <${process.env.GMAIL_USER}>`,
             to: `${value.username} <${value.email}>`,
