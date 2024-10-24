@@ -9,6 +9,7 @@ function SetPassword() {
   const [passwordWrong, setPasswordWrong] = useState(false)
   const [passwordInput, setPasswordInput] = useState(false)
   const [cnfpasswordInput, setCnfpasswordInput] = useState(false)
+  const [loading , setLoading] = useState(false)
 
   const currentParams = new URLSearchParams(window.location.search);
   const id = currentParams.get('id');
@@ -47,6 +48,7 @@ function SetPassword() {
       setPasswordInput(!(passwordInput))
     } else {
       setPasswordWrong(false)
+      setLoading(true)
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/helper/setPassword?password=${formInfo.password}&email=${email}`, { method: "POST", credentials: 'include' });
       const data = await response.json();
       if (data.success) {
@@ -55,7 +57,9 @@ function SetPassword() {
       } else {
         toast.error(data.message);
       }
+      setLoading(false)
     }
+  
   }
   return (
     <>
@@ -100,7 +104,13 @@ function SetPassword() {
                 </div>
               </div>
               <div className='flex flex-col gap-5'>
-                <button type='submit' className='px-2 py-1.5  bg-green-600 rounded-full text-white'>Save</button>
+              <button disabled={loading} type='submit' className='px-2 py-1.5  bg-green-600 rounded-full text-white'>
+                {loading ?
+                    <img src="/loader.gif" alt="loading" className='w-5 md:w-6 ' />
+                    :
+                    <span>Save</span>
+                  }
+                  </button>
               </div>
             </form>
           </div>

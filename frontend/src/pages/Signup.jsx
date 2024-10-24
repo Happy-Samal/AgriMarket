@@ -11,6 +11,7 @@ function Signup() {
     const [passwordWrong, setPasswordWrong] = useState(false)
     const [passwordInput, setPasswordInput] = useState(false)
     const [cnfpasswordInput, setCnfpasswordInput] = useState(false)
+    const [loading , setLoading] = useState(false)
 
     if (LoginUser.success) {
         navigate('/NotFound')
@@ -40,6 +41,7 @@ function Signup() {
             setCnfpasswordInput(!(cnfpasswordInput))
             setPasswordInput(!(passwordInput))
         } else {
+            setLoading(true)
             setPasswordWrong(false)
             try {
                 const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/signup`,
@@ -58,7 +60,7 @@ function Signup() {
                 } else {
                     toast.error(result.message);
                 }
-
+                setLoading(false)
             } catch (err) {
                 navigate('/error')
             }
@@ -130,7 +132,13 @@ function Signup() {
                             </div>
 
                             <div className='flex flex-col gap-3'>
-                                <button type='submit' className='px-2 py-1.5  bg-green-600 rounded-full text-white'>sign up</button>
+                                <button disabled={loading} type='submit' className='px-2 py-1.5  bg-green-600 rounded-full text-white'>
+                                    {loading ?
+                                        <img src="/loader.gif" alt="loading" className='w-5 md:w-6 ' />
+                                        :
+                                        <span>SignUp</span>
+                                    }
+                                </button>
                                 <h6 className='text-center'>Have already an account ? <Link to={'/user/login'} className='text-blue-600 underline'>login here</Link></h6>
                             </div>
                         </form>

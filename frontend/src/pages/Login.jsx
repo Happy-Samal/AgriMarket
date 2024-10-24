@@ -11,6 +11,7 @@ function Login() {
   const [passwordWrong, setPasswordWrong] = useState(false)
   const [passwordInput, setPasswordInput] = useState(false)
   const [cnfpasswordInput, setCnfpasswordInput] = useState(false)
+  const [loading , setLoading] = useState(false)
 
 
   if(LoginUser.success){
@@ -36,6 +37,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      setLoading(true)
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
         {
           method: 'POST',
@@ -53,7 +55,7 @@ function Login() {
       }else{
         toast.error(result.message);
       }
-
+    setLoading(false)
     } catch (err) {
       navigate('/error')
     }
@@ -104,7 +106,14 @@ function Login() {
               </div>
 
               <div className='flex flex-col gap-5'>
-                <button type='submit' className='px-2 py-1.5  bg-green-600 rounded-full text-white'>Login</button>
+              
+                <button disabled={loading} type='submit' className='px-2 py-1.5  bg-green-600 rounded-full text-white'>
+                {loading ?
+                    <img src="/loader.gif" alt="loading" className='w-5 md:w-6 ' />
+                    :
+                    <span>Login</span>
+                  }
+                  </button>
                 <h6 className='text-center'>Don't have an account ? <Link to={'/user/signup'} className='text-blue-600 underline'>singup</Link></h6>
               </div>
             </form>
