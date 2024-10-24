@@ -8,11 +8,13 @@ function Search() {
     const [search, setSearch] = useState(false)
     const [data, setData] = useState([])
     const navigate = useNavigate()
+    const [loading , setLoading ] = useState(false)
 
     const inputChange = async (e) => {
         const value = e.target.value.trim();
         setForm({ ...form, [e.target.name]: value })
         if (value.length > 0) {
+            setLoading(true)
             const products = await getProducts({value:value})
             let arr = []
             products.forEach(item => {
@@ -24,6 +26,7 @@ function Search() {
         } else {
             setData([])
         }
+        setLoading(false)
     }
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -45,9 +48,15 @@ function Search() {
                 <img src="/search.gif" alt="search" className='md:h-5 h-4 absolute left-3 md:top-2 top-1' />
             </form>
 
-            {search && <div className='rounded-3xl md:w-[40vw] w-full bg-white text-black absolute md:top-[67px] top-[100px] z-50 h-[50vh] flex flex-col  pt-3 overflow-hidden '>
+            {search && <div className='rounded-3xl md:w-[40vw] w-full bg-white text-black absolute md:top-[67px] top-[100px] z-50 h-[50vh] flex flex-col  pt-3 overflow-hidden  '>
 
                 {data.length == 0 && <span className='ml-3 text-[18px] font-semibold text-gray-400'> No result found </span>}
+
+                {loading && ( 
+                    <div className="flex justify-center items-center absolute inset-0"> 
+                        <img src="/loading.gif" alt="loading" className='w-8 md:w-12' />
+                    </div>
+                )}
 
                 {data?.slice(0, 5).map((item,index) => {
                     return (
