@@ -2,32 +2,23 @@ import Order from "../models/Order.js";
 import { SMTPClient } from 'emailjs';
 import ejs from 'ejs';
 import path from "path";
-import fs from 'fs';
 import Payment from '../models/Payment.js'
 
 const sendEmail = async (value) => {
-
+    
     try {
 
-        console.log("create server")
-        const server = new SMTPClient({
-            user: process.env.GMAIL_USER,
-            password: process.env.GMAIL_PASSWORD,
-            host: 'smtp.gmail.com',
-            port: 465,
-            ssl: true,
-        });
-        console.log("create server successfully", server)
+    const server = new SMTPClient({
+        user: process.env.GMAIL_USER,
+        password: process.env.GMAIL_PASSWORD,
+        host: 'smtp.gmail.com',
+        port: 465,
+        ssl: true,
+    });
 
+    const orderEmailTemplatePath = path.join(process.cwd(), 'public', 'orderEmail.ejs');
 
-        const orderEmailTemplatePath = path.join(process.cwd(), 'public', 'orderEmail.ejs');
-        console.log('Trying to read EJS template from:', orderEmailTemplatePath);
-
-        // Manually read the template file
-        const templateContent = fs.readFileSync(orderEmailTemplatePath, 'utf8');
-
-        console.log('Attempting to render the email template...');
-        const htmlContent = await ejs.renderFile(templateContent, {
+        const htmlContent = await ejs.renderFile(orderEmailTemplatePath, {
             username: value.username,
             profileLink: value.profileLink,
             orderId: value.orderId,
@@ -37,8 +28,7 @@ const sendEmail = async (value) => {
             products: value.products,
             name: value.name
         })
-        
-        console.log('Email template rendered successfully.');
+
         const message = await server.sendAsync({
             from: `AgriMarket Team <${process.env.GMAIL_USER}>`,
             to: `${value.username} <${value.email}>`,
@@ -47,7 +37,7 @@ const sendEmail = async (value) => {
                 { data: htmlContent, alternative: true }
             ]
         });
-        console.log("order email sent successfully")
+
         return {
             success: true,
             message: 'Email Sent Successfully!',
