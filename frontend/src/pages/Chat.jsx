@@ -151,7 +151,7 @@ function Chat() {
                         {chatHistory?.length === 0 && <h3 className='text-base md:text-[20px]'>No chat history</h3>}
                         {loader && (
                             <div className="flex justify-center items-center absolute inset-0">
-                                <img src="/loader.gif" alt="loading" className='w-12 md:w-16 invert' />
+                                <img src="/loader.gif" alt="loading" className='w-8 md:w-12 invert' />
                             </div>
                         )}
                         {chatHistory?.map((item) => {
