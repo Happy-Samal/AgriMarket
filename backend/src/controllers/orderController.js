@@ -5,7 +5,8 @@ import path from "path";
 import fs from 'fs'
 import Payment from '../models/Payment.js'
 
-const orderEmailTemplatePath = path.resolve(process.cwd(), 'public', 'orderEmail.ejs');
+const orderEmailTemplatePath = path.resolve('public', 'orderEmail.ejs');
+
 
 const sendEmail = async (value) => {
     
