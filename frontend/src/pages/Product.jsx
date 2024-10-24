@@ -118,12 +118,12 @@ function Product() {
       </Helmet>
 
 
-      {loading ? <div className='flex bg-white mt-8 p-10 md:p-20 items-center justify-center relative'>
+      {loading ? <div className='flex bg-white mt-8 p-10 md:p-20 items-center justify-center relative min-h-[80vh]'>
         <div className="flex justify-center items-center absolute inset-0">
           <img src="/loading.gif" alt="loading" className='w-16 md:w-20' />
         </div>
       </div> :
-        Object.keys(item).length === 0 ? <div className='flex bg-white mt-8 p-10 md:p-20 items-center justify-center font-bold md:text-lg text-[12px]'>You're looking for the product is not available 😑</div> :
+        Object.keys(item).length === 0 ? <div className='flex min-h-[80vh] bg-white mt-8 p-10 md:p-20 items-center justify-center font-bold md:text-lg text-[12px]'>You're looking for the product is not available 😑</div> :
           <div className='flex flex-col md:flex-row'>
             <div className='md:min-h-[60vh] lg:w-2/4 md:w-3/4 w-full bg-[#16520f] flex pt-8 relative justify-center'>
               <div className='flex flex-col gap-8 p-4  items-center lg:left-[7%] md:left-[8%] md:top-40 md:sticky md:rounded-l-2xl shadow-[0_0_40px_#000000] lg:h-[60%] h-[50%] w-[80%] bg-white text-white relative'>

@@ -151,14 +151,14 @@ function ShowProducts() {
             </div>
 
             {/* Right side: Products */}
-            <div className="w-full flex relative flex-col gap-6 px-4 pb-10 transition-all duration-700">
+            <div className="w-full flex relative flex-col gap-6 px-4 pb-10 transition-all duration-700 min-h-[100vh]">
                 <div className='flex gap-4 items-center '>
                     <img src="/filter.png" alt="expand" onClick={() => { setExpand(true) }} className='w-6 invert md:hidden flex' />
                     <h2 className="text-xl text-white font-semibold">Results for "{filters.category || query}"</h2>
                 </div>
 
                 {loading ? ( 
-                    <div className="flex justify-center items-center absolute inset-0 top-10"> 
+                    <div className="flex justify-center items-center absolute inset-0"> 
                         <img src="/loader.gif" alt="loading" className='w-16 md:w-20 ' />
                     </div>):
                     filteredProducts.length == 0 ? <h2 className="text-xl text-white font-semibold">No Items found</h2>
