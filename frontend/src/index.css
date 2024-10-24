@@ -11,7 +11,7 @@
 body {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  transition: all 200ms eas-in-out;
+  transition: all 100ms ease-in-out;
 }
 
 html {
