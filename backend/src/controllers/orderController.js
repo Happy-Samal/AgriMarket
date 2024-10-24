@@ -37,6 +37,7 @@ const sendEmail = async (value) => {
             products: value.products,
             name: value.name
         })
+        
         console.log('Email template rendered successfully.');
         const message = await server.sendAsync({
             from: `AgriMarket Team <${process.env.GMAIL_USER}>`,
