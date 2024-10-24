@@ -54,9 +54,11 @@ const login = async (req, res) => {
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
 
     res.status(200).cookie('agrimarketT', token, {
-        path:'/',
+        httpOnly: true,
+        secure:true,
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-        sameSite: 'None' 
+        sameSite: 'None' ,
+        path:'/'
     }).json({
         success: true,
         message: 'Login Successfully!',

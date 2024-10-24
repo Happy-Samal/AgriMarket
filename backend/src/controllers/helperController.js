@@ -20,7 +20,8 @@ const otpGenerate = async (req, res) => {
             httpOnly: true,
             secure: true,
             maxAge: 24 * 60 * 60 * 1000,
-            sameSite: 'None'
+            sameSite: 'None',
+            path:'/',
         }).json({
             otp: otp
         })

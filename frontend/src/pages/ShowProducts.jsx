@@ -164,7 +164,7 @@ function ShowProducts() {
                     </div>
                 )}
 
-                <div className="flex gap-2 flex-wrap justify-center lg:justify-start transition-all duration-700">
+                <div className="flex gap-2 flex-wrap justify-center  transition-all duration-700">
                     {filteredProducts.map((item) => (
                         <div key={item?._id} onClick={() => { navigate(`/product?pId=${item._id}&pCgy=${item.category}&pName=${item.name}`) }} className="bg-white p-4 shadow rounded-md cursor-pointer">
                             <img src={item?.img} alt={item?.name} className="w-[200px] h-[150px] object-cover mb-4 duration-300 ease-in-out hover:scale-105" />
