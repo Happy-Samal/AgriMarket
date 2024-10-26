@@ -52,7 +52,7 @@ function Verification() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const otp = formInfo.otp.join(''); // Combine OTP digits
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/helper/otpVerification?otp=${otp}`, { method: "GET", credentials: 'include' });
+    const response = await fetch(`/api/helper/otpVerification?otp=${otp}`, { method: "GET", credentials: 'include' });
     const data = await response.json();
     if (data.success) {
       navigate(`/user/login/otp/verification/setpassword?id=${id}&email=${encodeURIComponent(email)}`);

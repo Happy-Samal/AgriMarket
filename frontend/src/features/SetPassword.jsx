@@ -49,7 +49,7 @@ function SetPassword() {
     } else {
       setPasswordWrong(false)
       setLoading(true)
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/helper/setPassword?password=${formInfo.password}&email=${email}`, { method: "POST", credentials: 'include' });
+      const response = await fetch(`/api/helper/setPassword?password=${formInfo.password}&email=${email}`, { method: "POST", credentials: 'include' });
       const data = await response.json();
       if (data.success) {
         navigate(`/user/login`);

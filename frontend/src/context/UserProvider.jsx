@@ -7,7 +7,7 @@ function UserProvider ({children}) {
     
     const fetchData = async()=>{
         try{
-            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/isLogin`,{
+            const response = await fetch(`/api/auth/isLogin`,{
                 method:'GET',
                 credentials:'include'
             })

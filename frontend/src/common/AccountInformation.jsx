@@ -42,7 +42,7 @@ function AccountInformation() {
     } else {
       setPasswordWrong(false)
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/account/updateUser`,
+        const response = await fetch(`/api/account/updateUser`,
           {
             method: 'PUT',
             headers: {

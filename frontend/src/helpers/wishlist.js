@@ -3,7 +3,7 @@ import { toast } from "react-toastify"
 const getWishlist = async ()=>{
 
     try{
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/account/getWishlist`, {
+        const response = await fetch(`/api/account/getWishlist`, {
             method: 'GET',
             credentials: 'include'
           })
@@ -16,7 +16,7 @@ const getWishlist = async ()=>{
 const addToWishlist = async (pId)=>{
 
     try{
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/account/addToWishlist`, {
+        const response = await fetch(`/api/account/addToWishlist`, {
             method: 'POST',
             headers:{ "Content-type":'application/json'},
             body:JSON.stringify({pId:pId}),
@@ -31,7 +31,7 @@ const addToWishlist = async (pId)=>{
 const removeFromWishlist = async (id)=>{
 
     try{
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/account/removeFromWishlist`, {
+        const response = await fetch(`/api/account/removeFromWishlist`, {
             method: 'DELETE',
             headers:{ "Content-type":'application/json'},
             body:JSON.stringify({id:id}),

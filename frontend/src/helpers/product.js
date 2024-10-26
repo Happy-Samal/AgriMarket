@@ -4,7 +4,7 @@ import { toast } from "react-toastify"
 // get products 
 const getProduct = async()=>{
     try {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/product/getProducts`, {
+        const res = await fetch(`/api/product/getProducts`, {
           method: 'GET',
           credentials: 'include'
         })
@@ -19,7 +19,7 @@ const getProduct = async()=>{
 // add product 
 const addProduct = async(formData)=>{
     try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/product/addProduct`, {
+        const response = await fetch(`/api/product/addProduct`, {
             method: 'POST',
             headers: { "Content-type": 'application/json' },
             body: JSON.stringify(formData),
@@ -35,7 +35,7 @@ const addProduct = async(formData)=>{
 // delete product 
 const deleteProduct = async({id})=>{
     try {
-        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/product/deleteProduct`, {
+        const res = await fetch(`/api/product/deleteProduct`, {
           method: 'DELETE',
           headers: { "Content-type": 'application/json' },
           body: JSON.stringify({ id: id }),
@@ -52,7 +52,7 @@ const deleteProduct = async({id})=>{
 // update product 
 const updateProduct = async (formData)=>{
     try{
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/product/updateProduct`,{
+        const response = await fetch(`/api/product/updateProduct`,{
           method:'PUT',
           headers:{ "Content-type":'application/json'},
           body:JSON.stringify(formData),

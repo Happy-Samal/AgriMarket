@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 const sendEmail = async (info) => {
     try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/helper/sendEmail`,
+        const response = await fetch(`/api/helper/sendEmail`,
             {
                 method: 'POST',
                 headers: {
