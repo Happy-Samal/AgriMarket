@@ -9,7 +9,7 @@ const otpSend = async ({ email, username }) => {
         return data
     }
     try {
-        const res = await fetch(`/api/helper/otpGenerate`, {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/helper/otpGenerate`, {
             method: 'GET',
             credentials: 'include'
         })

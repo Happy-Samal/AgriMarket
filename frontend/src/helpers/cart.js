@@ -3,7 +3,7 @@ import { toast } from "react-toastify"
 const getCart = async ()=>{
 
     try{
-        const response = await fetch(`/api/account/getCart`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/account/getCart`, {
             method: 'GET',
             credentials: 'include'
           })
@@ -17,7 +17,7 @@ const getCart = async ()=>{
 const addToCart = async (pId)=>{
 
     try{
-        const response = await fetch(`/api/account/addToCart`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/account/addToCart`, {
             method: 'POST',
             headers:{ "Content-type":'application/json'},
             body:JSON.stringify({pId:pId}),
@@ -33,7 +33,7 @@ const addToCart = async (pId)=>{
 const removeFromCart = async (id)=>{
 
     try{
-        const response = await fetch(`/api/account/removeFromCart`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/account/removeFromCart`, {
             method: 'DELETE',
             headers:{ "Content-type":'application/json'},
             body:JSON.stringify({id:id}),
@@ -49,7 +49,7 @@ const removeFromCart = async (id)=>{
 const updateCart = async ({id, itemQuantity})=>{
 
     try{
-        const response = await fetch(`/api/account/updateCart`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/account/updateCart`, {
             method: 'PUT',
             headers:{ "Content-type":'application/json'},
             body:JSON.stringify({id:id , itemQuantity:itemQuantity}),

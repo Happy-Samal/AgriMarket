@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 // create Rzy Order
 const createRzyOrder = async (value)=>{
    try{
-    const response = await fetch(`/api/payment/createRzyOrder`,{
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/payment/createRzyOrder`,{
         method:'POST',
         headers:{ "Content-type":'application/json'},
         body:JSON.stringify(value),
@@ -46,7 +46,7 @@ const rzyPay = async({data , formInfo , totalAmount , orderProduct})=>{
             payment_id: response.razorpay_payment_id,
             signature: response.razorpay_signature
           };
-          const result = await fetch(`/api/payment/rzyCallBackUrl`, {
+          const result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/payment/rzyCallBackUrl`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

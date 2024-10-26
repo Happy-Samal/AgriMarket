@@ -2,7 +2,7 @@ import { toast } from "react-toastify"
 
 const addOrder = async (value) => {
     try {
-        const response = await fetch(`/api/order/addOrder`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/order/addOrder`, {
             method: 'POST',
             headers: { "Content-type": 'application/json' },
             body: JSON.stringify(value),
@@ -17,7 +17,7 @@ const addOrder = async (value) => {
 
 const getOrder = async () => {
     try {
-        const response = await fetch(`/api/order/getOrder`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/order/getOrder`, {
             method: 'GET',
             credentials: 'include'
         })
@@ -30,7 +30,7 @@ const getOrder = async () => {
 
 const getFarmerOrderProduct = async () => {
     try {
-        const response = await fetch(`/api/order/getFarmerOrderProduct`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/order/getFarmerOrderProduct`, {
             method: 'GET',
             credentials: 'include'
         })
@@ -42,7 +42,7 @@ const getFarmerOrderProduct = async () => {
 }
 const updateOrder = async (value) => {
     try {
-        const response = await fetch(`/api/order/updateOrder`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/order/updateOrder`, {
             method: 'PUT',
             headers: { "Content-type": 'application/json' },
             body: JSON.stringify(value),

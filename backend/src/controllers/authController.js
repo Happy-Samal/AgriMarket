@@ -58,7 +58,6 @@ const login = async (req, res) => {
         secure:true,
         maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
         sameSite: 'None' ,
-        path:'/'
     }).json({
         success: true,
         message: 'Login Successfully!',
@@ -69,18 +68,15 @@ const login = async (req, res) => {
 
 // logout
 const logout = async (req, res) => {
-    console.log('Cookies before clearing:', req.cookies);
     res.status(200).clearCookie('agrimarketT', {
         httpOnly: true, 
         secure: true,  
         sameSite: 'None',
-        path:'/'
     }).json({
         success: true,
         message: "Logout Successfully!",
         redirectUrl: '/'
     });
-    console.log('Cookies after clearing:', req.cookies);
 };
 
 
@@ -102,7 +98,6 @@ const deleteAccount = async(req,res)=>{
             httpOnly: true, 
             secure: true,  
             sameSite: 'None',
-            path:'/'
         }).json({
             success: true,
             message: "Account delete Successfully!",

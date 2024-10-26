@@ -1,7 +1,7 @@
 
 const getProducts = async(data)=>{
     try {
-        const response = await fetch(`/api/search`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/search`, {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify(data)
