@@ -69,6 +69,7 @@ const login = async (req, res) => {
 
 // logout
 const logout = async (req, res) => {
+    console.log(req.cookies)
     res.status(200).clearCookie('agrimarketT', {
         httpOnly: true, 
         secure: true,  
