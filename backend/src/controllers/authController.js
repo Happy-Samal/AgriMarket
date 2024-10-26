@@ -63,6 +63,7 @@ const login = async (req, res) => {
         message: 'Login Successfully!',
         redirectUrl: '/'
     });
+    
 }
 
 // logout
@@ -71,6 +72,7 @@ const logout = async (req, res) => {
         httpOnly: true, 
         secure: true,  
         sameSite: 'None',
+        path:'/'
     }).json({
         success: true,
         message: "Logout Successfully!",
@@ -97,6 +99,7 @@ const deleteAccount = async(req,res)=>{
             httpOnly: true, 
             secure: true,  
             sameSite: 'None',
+            path:'/'
         }).json({
             success: true,
             message: "Account delete Successfully!",
