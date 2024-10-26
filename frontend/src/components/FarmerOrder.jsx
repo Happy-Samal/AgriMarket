@@ -17,6 +17,7 @@ function FarmerOrder() {
     const getOrderInfo = async () => {
         setLoading(true)
         const data = await getFarmerOrderProduct();
+        data.orderProducts.reverse()
         setOrderInfo(data.orderProducts || [])
         setLoading(false)
     };

@@ -14,6 +14,7 @@ function YourOrder() {
   const getOrderInfo = async () => {
     setLoading(true)
     const data = await getOrder();
+    data.orderInfo.reverse()
     setOrderInfo(data.orderInfo || [])
     setLoading(false)
   };
