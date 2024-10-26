@@ -69,7 +69,7 @@ const login = async (req, res) => {
 
 // logout
 const logout = async (req, res) => {
-    console.log(req.cookies)
+    console.log('Cookies before clearing:', req.cookies);
     res.status(200).clearCookie('agrimarketT', {
         httpOnly: true, 
         secure: true,  
@@ -80,6 +80,7 @@ const logout = async (req, res) => {
         message: "Logout Successfully!",
         redirectUrl: '/'
     });
+    console.log('Cookies after clearing:', req.cookies);
 };
 
 
