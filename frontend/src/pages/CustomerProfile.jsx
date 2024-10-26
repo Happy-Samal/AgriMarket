@@ -34,6 +34,7 @@ function CustomerProfile() {
 
   const logoutClick = async () => {
     const result = await logout()
+    console.log(result)
     if (result.success) {
       navigate(result.redirectUrl)
       window.location.reload();
