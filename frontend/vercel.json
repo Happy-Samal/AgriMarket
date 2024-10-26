@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "https://agri-market-happy-samal-backend.vercel.app/api/(.*)",  
-      "destination": "https://agri-market-happy-samal-backend.vercel.app/api/$1"
-    },
-    {
       "source": "/(.*)", 
       "destination": "/index.html"
     }
