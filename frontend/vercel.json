@@ -1,8 +1,12 @@
 {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/index.html"
-      }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/api/(.*)",  
+      "destination": "https://agri-market-happy-samal-backend.vercel.app/api/$1"
+    },
+    {
+      "source": "/(.*)", 
+      "destination": "/index.html"
+    }
+  ]
+}

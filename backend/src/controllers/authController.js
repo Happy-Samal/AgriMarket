@@ -66,14 +66,18 @@ const login = async (req, res) => {
     
 }
 
-// logout the user
-const logout = async(req,res)=>{
-    res.status(200).clearCookie('agrimarketT').json({
-        success:true,
-        message:"Logout Successfully!",
-        redirectUrl:'/'
-    })
-}
+const logout = async (req, res) => {
+    res.status(200).clearCookie('agrimarketT', {
+        httpOnly: true, 
+        secure: true,  
+        sameSite: 'None' 
+    }).json({
+        success: true,
+        message: "Logout Successfully!",
+        redirectUrl: '/'
+    });
+};
+
 
 // delete the user
 const deleteAccount = async(req,res)=>{

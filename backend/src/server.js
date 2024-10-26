@@ -26,30 +26,30 @@ const port = process.env.PORT || 3000
 const server = createServer(app);  // Create HTTP server
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL, 
+    origin: process.env.FRONTEND_URL,
     methods: ["GET", "POST"],
     credentials: true
   }
 });
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    methods: "GET,PUT,POST,DELETE",
-    credentials: true
+  origin: process.env.FRONTEND_URL,
+  methods: "GET,PUT,POST,DELETE",
+  credentials: true
 }));
-app.use(bodyParser.json({limit:'10mb'}))
+app.use(bodyParser.json({ limit: '10mb' }))
 app.use(cookieParser())
 
 
 
 // define routes
-app.use('/api/auth',authRouter)
-app.use('/api/account',accountRouter)
-app.use('/api/helper',helperRouter)
-app.use('/api/product',productRouter)
-app.use('/api/search',searchRouter)
-app.use('/api/chat',chatRouter)
-app.use('/api/order',orderRouter)
-app.use('/api/payment',razorpayRoter)
+app.use('/api/auth', authRouter)
+app.use('/api/account', accountRouter)
+app.use('/api/helper', helperRouter)
+app.use('/api/product', productRouter)
+app.use('/api/search', searchRouter)
+app.use('/api/chat', chatRouter)
+app.use('/api/order', orderRouter)
+app.use('/api/payment', razorpayRoter)
 
 
 
@@ -58,6 +58,17 @@ app.get('/', (req, res) => {
   res.send('API is running...')
 })
 
+// error middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    success: "false",
+    message: 'Something broke!'
+  }
+  );
+});
+
+
 
 // web socket
 io.on('connection', (socket) => {
@@ -65,13 +76,13 @@ io.on('connection', (socket) => {
 
   let currentUserId = null;
 
-  socket.on('send_status',({id}) =>{
+  socket.on('send_status', ({ id }) => {
     currentUserId = id
-    io.emit('receive_status' , {id:id , isOnline:true})
+    io.emit('receive_status', { id: id, isOnline: true })
   })
 
   socket.on('send_message', ({ sender, content }) => {
-    io.emit('receive_message', { sender, content, isSeen:false, timestamp: new Date() });
+    io.emit('receive_message', { sender, content, isSeen: false, timestamp: new Date() });
   });
 
   socket.on('disconnect', () => {
