@@ -4,7 +4,7 @@ import { UserContext } from '../context/UserProvider'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { addOrder } from '../helpers/order'
-import { createRzyOrder } from '../helpers/payment'
+import { createRzyOrder , rzyPay} from '../helpers/payment'
 
 const Checkout = () => {
   const loginUser = useContext(UserContext)
@@ -15,7 +15,7 @@ const Checkout = () => {
   const { product, quantity, price, cartItems } = location.state || {};
   const [formInfo, setFormInfo] = useState({})
   const [loading, setLoading] = useState(false)
-  const [loader , setLoader] = useState(false)
+  const [loader, setLoader] = useState(false)
 
   useEffect(() => {
     if (loginUser) {
@@ -63,60 +63,7 @@ const Checkout = () => {
     setLoading(false);
 
     if (data.success) {
-      const options = {
-        key: data.rzy_id, // Your Razorpay Key ID
-        amount: Number(totalAmount) * 100, // Amount in subunits
-        currency: "INR",
-        name: 'AgriMarket', // Your business name
-        description: "Test Transaction",
-        image: "https://example.com/your_logo",
-        order_id: data.id, // Razorpay Order ID from backend
-        prefill: {
-          name: formInfo?.username,
-          email: formInfo?.email,
-          contact: formInfo?.phone // Customer's phone number
-        },
-        notes: {
-          address: "Razorpay Corporate Office"
-        },
-        theme: {
-          color: "#3399cc"
-        },
-        handler: async function (response) {
-          const paymentData = {
-            order_id: response.razorpay_order_id,
-            payment_id: response.razorpay_payment_id,
-            signature: response.razorpay_signature
-          };
-          const result = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/payment/rzyCallBackUrl`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(paymentData),
-          });
-
-          const resultData = await result.json();
-
-          if (resultData.success) {
-            toast.success(resultData.message);
-            await orderProduct();
-          } else {
-            toast.error(resultData.message);
-          }
-        },
-        modal: {
-          onDismiss: function () {
-            toast.error("Payment process was cancelled.");
-          }
-        }
-      };
-
-      const rzp1 = new Razorpay(options);
-      rzp1.open();
-      rzp1.on('payment.failed', function (response) {
-        toast.error("Payment failed, please try again.");
-      });
+      await rzyPay({data , formInfo , totalAmount , orderProduct})
     } else {
       toast.error(data.message);
     }
