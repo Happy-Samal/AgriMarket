@@ -115,7 +115,7 @@ function Login() {
                     <span>Login</span>
                   }
                   </button>
-                <h6 className='text-center'>Don't have an account ? <Link to={'/user/signup'} className='text-blue-600 underline'>singup</Link></h6>
+                <h6 className='text-center'>Don't have an account ? <Link to={'/user/signup'} className='text-blue-600 underline'>signup</Link></h6>
               </div>
             </form>
           </div>
