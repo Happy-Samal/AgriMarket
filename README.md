@@ -47,10 +47,10 @@ click - https://agri-market-happy-samal.vercel.app/
     Create a .env file in the root directory (frontend ) and add the necessary environment variables (example below):
 
     ```sh
-    VITE_BACKEND_URL=your_backend_url
-    VITE_TEMPLATE_KEY=<your_email_template_id>
-    VITE_SERVICE_KEY=<your_email_service_key>
-    VITE_PUBLIC_KEY=<your_email_public_id>
+    VITE_BACKEND_URL=<YOUR_BACKEND_URL>
+    VITE_TEMPLATE_KEY=<YOUR_EMAIL_TEMPLATE_ID>
+    VITE_SERVICE_KEY=<YOUR_EMAIL_SERVICE_KEY>
+    VITE_PUBLIC_KEY=<YOUR_EMAIL_PUBLIC_KEY>
     ```
     Create a .env file in the backend  and add the necessary environment variables (example below):
 
