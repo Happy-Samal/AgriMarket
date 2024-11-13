@@ -36,8 +36,8 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
     try {
-      setLoading(true)
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
         {
           method: 'POST',
@@ -55,11 +55,11 @@ function Login() {
       }else{
         toast.error(result.message);
       }
-    setLoading(false)
     } catch (err) {
       console.log(err)
       toast.error("Internal Server Error!");
     }
+    setLoading(false)
   }
 
 

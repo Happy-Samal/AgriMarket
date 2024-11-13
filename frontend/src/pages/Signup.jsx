@@ -60,10 +60,10 @@ function Signup() {
                 } else {
                     toast.error(result.message);
                 }
-                setLoading(false)
             } catch (err) {
                 toast.error("Internal Server Error!");
             }
+            setLoading(false)
         }
 
     }
