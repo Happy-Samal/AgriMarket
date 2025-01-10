@@ -78,7 +78,78 @@ const sendEmail = async (req, res) => {
     });
 
 
-    const otpEmailTemplate = path.join(process.cwd(), 'public', 'otpEmail.ejs');
+    // const otpEmailTemplate = path.join(process.cwd(), 'public', 'otpEmail.ejs');
+    const otpEmailTemplate = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Email Template</title>
+    <style>
+        .container {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #4CAF50;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .header h1 {
+            color: white;
+            margin: 0;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .otp {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AgriMarket</h1>
+        </div>
+        <div class="content">
+            <p>Dear <%= username %> ,</p>
+            <p>Thank you for using AgriMarket. Please use the following OTP to complete your verification process. This OTP is valid for 1 day.</p>
+            <div class="otp"><%= text %></div>
+            <p>If you did not request this OTP, please ignore this email.</p>
+            <p>Thank you,<br>AgriMarket Team</p>
+        </div>
+        <div class="footer">
+            &copy; 2024-25 AgriMarket. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>`;
 
     try {
 
