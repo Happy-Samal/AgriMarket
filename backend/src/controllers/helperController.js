@@ -153,7 +153,7 @@ const sendEmail = async (req, res) => {
 
     try {
 
-        const htmlContent = await ejs.render(otpEmailTemplate, {
+        const htmlContent =  ejs.render(otpEmailTemplate, {
             text: req.body.text,
             username: req.body.username
         })
