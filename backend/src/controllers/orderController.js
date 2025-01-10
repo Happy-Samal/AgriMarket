@@ -136,7 +136,7 @@ const sendEmail = async (value) => {
 
     try {
 
-        const htmlContent = await ejs.renderFile(orderEmailTemplate, {
+        const htmlContent = ejs.render(orderEmailTemplate, {
             username: value.username,
             profileLink: value.profileLink,
             orderId: value.orderId,
