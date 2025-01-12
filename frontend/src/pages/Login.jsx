@@ -36,14 +36,9 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
-     // Check if third-party cookies are allowed
-  const thirdPartyCookiesAllowed = localStorage.getItem('thirdPartyCookiesAllowed');
   
-  if (thirdPartyCookiesAllowed !== 'true') {
-    toast.error("Please allow third-party cookies for a seamless login experience.");
-    return;
-  }
+    toast.warning("Please allow third-party cookies for a seamless login experience.");
+   
     setLoading(true)
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`,
