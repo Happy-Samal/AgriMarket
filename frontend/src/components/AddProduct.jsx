@@ -51,10 +51,10 @@ function AddProduct({ onClose , getProducts }) {
     <>
       <div className='absolute bg-white w-full h-full top-0  left-0 z-20 flex justify-center p-2 pt-12 md:p-10 overflow-y-auto scrollbar-rounded'>
       { sendData && <div className='h-full w-full absolute top-0 z-20 md:pt-64 pt-44 font-bold text-[24px] flex items-center text-white bg-black bg-opacity-80 flex-col  '>
-        <img src="/upload.gif" alt="sending" className='w-[100px] invert' />
+        <img loading="lazy"  src="/upload.gif" alt="sending" className='w-[100px] invert' />
         <h3>sending...</h3>
         </div>}
-        <img src="/cross.gif" alt="cross" onClick={() => onClose()} className='absolute top-2 right-2 w-8 md:w-10 cursor-pointer ' />
+        <img loading="lazy"  src="/cross.gif" alt="cross" onClick={() => onClose()} className='absolute top-2 right-2 w-8 md:w-10 cursor-pointer ' />
 
         <form onSubmit={formSubmit} className=' h-full md:w-[70%] w-full flex flex-col gap-8 relative  text-black '>
          
@@ -85,10 +85,10 @@ function AddProduct({ onClose , getProducts }) {
              <input required type="text" name='discount' id='discount' value={formData.discount || ""} onChange={handleForm} placeholder='ex: 10 , 30 , 45 , 70' className=' border-2 border-black  px-3 py-1 md:py-2 rounded-full outline-none' />
             </div>
             <div className={`min-h-[150px] md:min-h-[200px] w-full border-2 bg-gray-100 border-dashed rounded-md flex flex-col justify-center items-center cursor-pointer relative ${msg ? 'border-red-500' : 'border-black'} `} >
-              <img src="/uploadImg.png" alt="upload" className='w-12'  />
+              <img loading="lazy"  src="/uploadImg.png" alt="upload" className='w-12'  />
               <h3 className={`${msg ? 'text-red-500': 'text-gray-500'} text-[14px] md:text-[18px] font-semibold`}>{msg ? msg : 'upload your product image'}</h3>
              <input required type="file" accept="image/*" name='img' id='img' className='outline-none absolute inset-0 opacity-0 cursor-pointer' onChange={imgHandle}/>
-             {formData.img ? <img src={formData.img ? formData.img : ''} alt="img" className='w-[100px] h-[100px]'/> : ''}
+             {formData.img ? <img loading="lazy"  src={formData.img ? formData.img : ''} alt="img" className='w-[100px] h-[100px]'/> : ''}
             </div>
             <div className='flex flex-col gap-2'>
               <label htmlFor="description" className='text-left ml-3 font-medium md:text-base text-[13px]'>Enter your product description :  </label>

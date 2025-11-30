@@ -183,7 +183,7 @@ const Checkout = () => {
                   className="w-full mt-6 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 flex items-center justify-center"
                 >
                   {loading ?
-                    <img src="loading.gif" alt="loading" className='w-5 md:w-6 invert' />
+                    <img loading="lazy"  src="loading.gif" alt="loading" className='w-5 md:w-6 invert' />
                     :
                     <span>Confirm and Pay</span>
                   }

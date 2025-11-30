@@ -47,7 +47,7 @@ function FarmerProfile() {
         <div className={`absolute md:relative md:left-0 z-20 md:z-0 flex flex-col md:w-[30%] gap-3 transition-all duration-700 ${expand ? ' top-4 left-4 w-[70vw]  md:top-0  ' : ' -left-80  '} `} onClick={() => { setExpand(false) }}>
           <div className='flex  gap-4 border shadow-[0_0_40px_#000000] bg-white h-[10vh] lg:p-8 p-4 items-center text-green-600'>
             <div className='border rounded-full overflow-hidden h-[24px] lg:h-[42px] md:h-[30px] items-center justify-center flex bg-black' >
-              <img src="/avatar2.gif" alt="avatar" className='h-[24px] lg:h-[42px] md:h-[30px]' />
+              <img loading="lazy"  src="/avatar2.gif" alt="avatar" className='h-[24px] lg:h-[42px] md:h-[30px]' />
             </div>
             <div className='flex flex-col '>
               <p className='lg:text-[14px] text-[10px]'>Hello farmer,</p>
@@ -57,15 +57,15 @@ function FarmerProfile() {
           <div className='border lg:p-8 p-4 pb-2 shadow-[0_0_40px_#000000] bg-white h-[70vh] flex flex-col justify-between lg:text-[18px] text-[14px] font-semibold'>
             <div className='flex flex-col gap-5 '>
               <button onClick={(e) => { btnClick(e) }} name='yourProduct' className={`${btnColor('yourProduct')} cursor-pointer  flex gap-2 items-center text-start`}>
-                <img src="/store.gif" alt="store" className='w-6 ' />
+                <img loading="lazy"  src="/store.gif" alt="store" className='w-6 ' />
                 <p>Your Products</p>
               </button>
               <button onClick={(e) => { btnClick(e) }} name='orderProduct' className={`${btnColor('orderProduct')} cursor-pointer  flex gap-2 items-center`}>
-                <img src="/farmerOrder.gif" alt="orderProduct" className='w-6 ' />
+                <img loading="lazy"  src="/farmerOrder.gif" alt="orderProduct" className='w-6 ' />
                 <p>Ordered Product</p>
               </button>
               <button onClick={(e) => { btnClick(e) }} name='analysis' className={`${btnColor('analysis')} cursor-pointer  flex gap-2 items-center`}>
-                <img src="/analysis.gif" alt="analysis" className='w-6 ' />
+                <img loading="lazy"  src="/analysis.gif" alt="analysis" className='w-6 ' />
                 <p>Analysis</p>
               </button>
             </div>
@@ -78,7 +78,7 @@ function FarmerProfile() {
 
         <div className='flex flex-col  gap-10 border shadow-[0_0_40px_#000000] bg-[#16520f] min-h-[100vh]  w-full md:w-3/4 md:p-8 p-2 items-center  md:items-baseline overflow-x-hidden scrollbar-rounded relative transition-all duration-500 text-white ' >
 
-          <img src="/expandbar.svg" alt="expand" onClick={() => { setExpand(true) }} className='w-7 invert absolute top-2.5 left-2 md:hidden flex' />
+          <img loading="lazy"  src="/expandbar.svg" alt="expand" onClick={() => { setExpand(true) }} className='w-7 invert absolute top-2.5 left-2 md:hidden flex' />
 
           {page == 'yourProduct' &&
             <>

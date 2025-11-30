@@ -57,7 +57,7 @@ function FarmerOrder() {
             </Helmet>
 
             {loading && <div className='h-full w-full absolute left-0 top-0 z-20 md:pt-64 pt-44  font-bold text-[24px] flex items-center text-white bg-black bg-opacity-80 flex-col '>
-                <img src="/loading.gif" alt="sending" className='w-[70px]' />
+                <img loading="lazy"  src="/loading.gif" alt="sending" className='w-[70px]' />
             </div>}
 
             <div className='flex flex-col gap-4 items-center md:items-baseline h-[150vh] relative' >
@@ -71,11 +71,11 @@ function FarmerOrder() {
                             <div className='flex justify-between items-center md:px-3 gap-8 text-black font-bold lg:text-lg text-[12px]'>
                                 <h1 className='text-black font-bold '>order ID : {item.orderId}</h1>
                                 {(item?.orderStatus == 'Cancelled' || item?.orderStatus == 'Delivered') ? '' :
-                                    <img src="/edit.gif" alt="edit" onClick={() => { editClick(item) }} className='h-5 cursor-pointer' />}
+                                    <img loading="lazy"  src="/edit.gif" alt="edit" onClick={() => { editClick(item) }} className='h-5 cursor-pointer' />}
                             </div>
                             <div className="border-b-2 pb-2 lg:pb-4 flex flex-col gap-1 pr-2 lg:pr-8 text-black ">
                                 <div className="flex gap-4">
-                                    <img src={item.product?.img} alt="product" onClick={() => { itemClick(item.product) }} className="h-16 w-16 lg:h-24 lg:w-24 rounded-md object-cover cursor-pointer duration-300 ease-in-out hover:scale-105" />
+                                    <img loading="lazy"  src={item.product?.img} alt="product" onClick={() => { itemClick(item.product) }} className="h-16 w-16 lg:h-24 lg:w-24 rounded-md object-cover cursor-pointer duration-300 ease-in-out hover:scale-105" />
                                     <div className="flex flex-col gap-2">
                                         <h2 onClick={() => { itemClick(item.product) }} className=" lg:text-lg text-sm font-semibold  text-wrap lg:h-[50px] h-[40px] overflow-hidden cursor-pointer hover:text-green-500">{item.product?.name}, {item.product?.description}</h2>
                                         <div className="flex items-center gap-2">
@@ -103,7 +103,7 @@ function FarmerOrder() {
 
             {edit &&
                 <div className=' bg-white w-full h-full inset-0 absolute px-5 py-20 md:px-20 justify-center flex'>
-                    <img src="/cross.gif" alt="cross" onClick={() => { setEdit(false) }} className='w-7 cursor-pointer absolute right-2 top-2' />
+                    <img loading="lazy"  src="/cross.gif" alt="cross" onClick={() => { setEdit(false) }} className='w-7 cursor-pointer absolute right-2 top-2' />
                     <form onSubmit={handleSubmit} className='flex flex-col gap-4 text-black relative md:w-3/4 '>
                         <h1 className='text-black font-bold lg:text-lg text-sm'>order ID : {formInfo?.orderId}</h1>
                         <div className='flex flex-col gap-2'>

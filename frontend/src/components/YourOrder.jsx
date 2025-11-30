@@ -48,7 +48,7 @@ function YourOrder() {
       </Helmet>
 
       {loading && <div className='h-full w-full absolute left-0 top-0 z-20 md:pt-64 pt-44  font-bold text-[24px] flex items-center text-white bg-black bg-opacity-80 flex-col '>
-                <img src="/loading.gif" alt="sending" className='w-[70px]' />
+                <img loading="lazy"  src="/loading.gif" alt="sending" className='w-[70px]' />
             </div>}
       <div className="h-[150vh] w-full  bg-white rounded-md flex flex-col gap-4 py-8 md:py-6 relative">
         <h1 className="md:text-xl text-md font-semibold border-b-2 pb-4">My Order ({orderInfo?.length})</h1>
@@ -66,7 +66,7 @@ function YourOrder() {
                 </div> :
                   <div key={prod._id} className="border-b-2 pb-2 lg:pb-4 flex flex-col gap-2 pr-2 lg:pr-8 border-gray-600 text-black ">
                     <div className="flex gap-4">
-                      <img src={prod.product?.img} alt="product" onClick={() => { itemClick(prod.product) }} className="h-16 w-16 lg:h-24 lg:w-24 rounded-md object-cover cursor-pointer duration-300 ease-in-out hover:scale-105" />
+                      <img loading="lazy"  src={prod.product?.img} alt="product" onClick={() => { itemClick(prod.product) }} className="h-16 w-16 lg:h-24 lg:w-24 rounded-md object-cover cursor-pointer duration-300 ease-in-out hover:scale-105" />
 
                       <div className="flex flex-col gap-2">
                         <h2 onClick={() => { itemClick(prod.product) }} className=" lg:text-lg text-sm font-semibold  text-wrap lg:h-[50px] h-[40px] overflow-hidden cursor-pointer hover:text-green-500">{prod.product?.name}, {prod.product?.description}</h2>

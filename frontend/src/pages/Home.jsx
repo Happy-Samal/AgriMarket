@@ -35,7 +35,7 @@ function Home() {
           <div className=' mt-2 bg-white flex md:gap-20 px-10 gap-8 lg:justify-center items-center overflow-x-auto scrollbar-hide text-gray-700 font-semibold py-2'>
             {category.map((item, index) => {
               return <div key={index} onClick={() => { navigate(`/search?query=${item}`) }} className='flex flex-col cursor-pointer items-center'>
-                <img src={`/${item}.png`} alt={item} className='md:w-[60px] w-10 duration-300 ease-in-out hover:scale-110' />
+                <img loading="lazy"  src={`/${item}.png`} alt={item} className='md:w-[60px] w-10 duration-300 ease-in-out hover:scale-110' />
                 <h1 className='md:text-lg text-sm'>{item}</h1>
               </div>
             })}
@@ -53,7 +53,7 @@ function Home() {
             >
               {banners.map((item, index) => (
                 <div key={index} onClick={() => navigate(`/search?query=${item.category}`)}>
-                  <img src={item.img} alt={item.title} className="object-cover inset-0 w-full h-[350px]" />
+                  <img loading="lazy"  src={item.img} alt={item.title} className="object-cover inset-0 w-full h-[350px]" />
                   <p className="legend bg-gray-800 bg-opacity-50 text-white text-xl font-bold cursor-pointer">
                     {item.title}
                   </p>
@@ -87,7 +87,7 @@ function Home() {
               <div className='flex flex-col h-[40px]  gap-5 cursor-pointer md:w-[70%] w-[80%] overflow-hidden hover:h-[140px] transition-all duration-500 ease-in-out border-b border-[#b0b0b0]'>
                 <div className='flex justify-between items-center'>
                   <span className='md:text-[24px] text-[12px] font-[500]'>What are the benefits of using AgriMarket?</span>
-                  <img src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
+                  <img loading="lazy"  src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
                 </div>
                 <span className='text-[10px] sm:text-base'>AgriMarket allows you to connect directly with local farmers, ensuring you get the freshest produce available. By buying directly from farmers, you support sustainable agriculture and can often find better prices than in traditional grocery stores.</span>
               </div>
@@ -95,7 +95,7 @@ function Home() {
               <div className='flex flex-col h-[40px]  gap-5 cursor-pointer md:w-[70%] w-[80%] overflow-hidden hover:h-[140px] transition-all duration-500 ease-in-out border-b border-[#b0b0b0]'>
                 <div className='flex justify-between items-center'>
                   <span className='md:text-[24px] text-[12px] font-[500]'>How do I contact farmers directly?</span>
-                  <img src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
+                  <img loading="lazy"  src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
                 </div>
                 <span className='text-[10px] sm:text-base'>With AgriMarket, you can chat directly with farmers through our live chat feature. This allows you to ask questions about products, get recommendations, and receive personalized service tailored to your needs.</span>
               </div>
@@ -103,7 +103,7 @@ function Home() {
               <div className='flex flex-col h-[40px]  gap-5 cursor-pointer md:w-[70%] w-[80%] overflow-hidden hover:h-[140px] transition-all duration-500 ease-in-out border-b border-[#b0b0b0]'>
                 <div className='flex justify-between items-center'>
                   <span className='md:text-[24px] text-[12px] font-[500]'>What types of products can I find on AgriMarket?</span>
-                  <img src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
+                  <img loading="lazy"  src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
                 </div>
                 <span className='text-[10px] sm:text-base'>AgriMarket offers a wide variety of products, including grains, fruits, vegetables, dairy, meat, and more, all sourced directly from local farmers. You can find everything you need for your household while supporting your community.</span>
               </div>
@@ -111,7 +111,7 @@ function Home() {
               <div className='flex flex-col h-[40px]  gap-5 cursor-pointer md:w-[70%] w-[80%] overflow-hidden hover:h-[140px] transition-all duration-500 ease-in-out border-b border-[#b0b0b0]'>
                 <div className='flex justify-between items-center'>
                   <span className='md:text-[24px] text-[12px] font-[500]'>How does AgriMarket ensure product quality?</span>
-                  <img src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
+                  <img loading="lazy"  src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
                 </div>
                 <span className='text-[10px] sm:text-base'>We take product quality seriously at AgriMarket. All farmers are vetted to ensure they meet our quality standards, and we encourage customer feedback to maintain high standards. You can trust that you’re getting the best produce available.</span>
               </div>
@@ -119,7 +119,7 @@ function Home() {
               <div className='flex flex-col h-[40px]  gap-5 cursor-pointer md:w-[70%] w-[80%] overflow-hidden hover:h-[140px] transition-all duration-500 ease-in-out border-b border-[#b0b0b0]'>
                 <div className='flex justify-between items-center'>
                   <span className='md:text-[24px] text-[12px] font-[500]'>How can farmers sell their products on AgriMarket?</span>
-                  <img src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
+                  <img loading="lazy"  src="/downarrow.png" alt="downarrow" className='invert filter h-3 w-3 md:h-6 md:w-6' />
                 </div>
                 <span className='text-[10px] sm:text-base'>Farmers can create an account on AgriMarket to list and sell their products directly. Our platform is designed to help them reach customers effectively while providing them with the tools they need to manage their sales.</span>
               </div>

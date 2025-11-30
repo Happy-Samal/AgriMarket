@@ -81,7 +81,7 @@ function ShowProducts() {
 
                 <div className='flex justify-between items-center'>
                     <h2 className="text-xl font-semibold">Filters</h2>
-                    <img src="cross.gif" alt="cross" onClick={() => { setExpand(false) }} className='h-8 cursor-pointer md:hidden flex' />
+                    <img loading="lazy"  src="cross.gif" alt="cross" onClick={() => { setExpand(false) }} className='h-8 cursor-pointer md:hidden flex' />
                 </div>
 
                 {/* Category Filter */}
@@ -153,20 +153,20 @@ function ShowProducts() {
             {/* Right side: Products */}
             <div className="w-full flex relative flex-col gap-6 px-4 pb-10 transition-all duration-700 min-h-[100vh]">
                 <div className='flex gap-4 items-center '>
-                    <img src="/filter.png" alt="expand" onClick={() => { setExpand(true) }} className='w-6 invert md:hidden flex' />
+                    <img loading="lazy"  src="/filter.png" alt="expand" onClick={() => { setExpand(true) }} className='w-6 invert md:hidden flex' />
                     <h2 className="text-xl text-white font-semibold">Results for "{filters.category || query}"</h2>
                 </div>
 
                 {loading ? ( 
                     <div className="flex justify-center items-center absolute inset-0"> 
-                        <img src="/loader.gif" alt="loading" className='w-16 md:w-20 ' />
+                        <img loading="lazy"  src="/loader.gif" alt="loading" className='w-16 md:w-20 ' />
                     </div>):
                     filteredProducts.length == 0 ? <h2 className="text-xl text-white font-semibold">No Items found</h2>
                     :
                     <div className="flex gap-2 flex-wrap justify-center  transition-all duration-700">
                     {filteredProducts.map((item) => (
                         <div key={item?._id} onClick={() => { navigate(`/product?pId=${item._id}&pCgy=${item.category}&pName=${item.name}`) }} className="bg-white p-4 shadow rounded-md cursor-pointer">
-                            <img src={item?.img} alt={item?.name} className="w-[200px] h-[150px] object-cover mb-4 duration-300 ease-in-out hover:scale-105" />
+                            <img loading="lazy"  src={item?.img} alt={item?.name} className="w-[200px] h-[150px] object-cover mb-4 duration-300 ease-in-out hover:scale-105" />
                             <h3 className="font-medium text-lg mb-2">{item?.name}</h3>
                             <h1 className='text-gray-400'>price</h1>
                             <span className='flex gap-2 items-center'>

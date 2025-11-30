@@ -160,7 +160,7 @@ function Chat() {
                                     className={`flex items-center  justify-between cursor-pointer hover:bg-[#2466fd] ${id == receiver ? 'bg-[#2466fd]' : 'bg-[#252331]'} py-2 px-3 md:p-4  rounded-lg`}
                                 >
                                     <div className='flex gap-2 items-center'>
-                                        <img src="/avatar3.gif" alt="avatar" className="lg:h-9 h-5 border rounded-full bg-black" />
+                                        <img loading="lazy"  src="/avatar3.gif" alt="avatar" className="lg:h-9 h-5 border rounded-full bg-black" />
                                         <div className='flex flex-col  justify-center'>
                                             <h1 className="lg:text-[18px] text-[10px]">{username}</h1>
                                             <span className='flex '>
@@ -210,16 +210,16 @@ function Chat() {
                             <span>Follow Me On</span>
                             <div className='flex gap-4'>
                                 <a href="https://www.instagram.com/rudrasamal_/" target="_blank" rel="noopener noreferrer">
-                                    <img src="/insta.gif" alt="insta" className=' h-[20px] lg:h-[25px]' />
+                                    <img loading="lazy"  src="/insta.gif" alt="insta" className=' h-[20px] lg:h-[25px]' />
                                 </a>
                                 <a href="https://www.facebook.com/samalrudra.rudra" target="_blank" rel="noopener noreferrer">
-                                    <img src="/facebook.gif" alt="facebook" className='h-[20px] lg:h-[25px]' />
+                                    <img loading="lazy"  src="/facebook.gif" alt="facebook" className='h-[20px] lg:h-[25px]' />
                                 </a>
                                 <a href="https://www.linkedin.com/in/happy-samal" target="_blank" rel="noopener noreferrer">
-                                    <img src="/linkedin.gif" alt="linkedin" className='h-[20px] lg:h-[25px]' />
+                                    <img loading="lazy"  src="/linkedin.gif" alt="linkedin" className='h-[20px] lg:h-[25px]' />
                                 </a>
                                 <a href="https://github.com/Happy-Samal" target="_blank" rel="noopener noreferrer">
-                                    <img src="/github.gif" alt="github" className='h-[20px] lg:h-[25px]' />
+                                    <img loading="lazy"  src="/github.gif" alt="github" className='h-[20px] lg:h-[25px]' />
                                 </a>
                             </div>
                         </div>
@@ -232,7 +232,7 @@ function Chat() {
 
                     {/* upper heading box */}
                     <div className='flex border-b-2 border-[#1a1d26] font-semibold text-[14px] md:text-[20px] w-full h-[8%] justify-between items-center px-2 lg:px-10'>
-                        <img src="/expandbar.svg" alt="expand" onClick={() => { setExpand(true) }} className='w-7 invert cursor-pointer visible md:invisible ' />
+                        <img loading="lazy"  src="/expandbar.svg" alt="expand" onClick={() => { setExpand(true) }} className='w-7 invert cursor-pointer visible md:invisible ' />
                         <div className="flex items-center gap-4">
                             <h1 className="text-sm md:text-lg font-semibold">{receiver == null ? 'AgriMarket' : receiverName}</h1>
                             {receiver != null && (
@@ -248,7 +248,7 @@ function Chat() {
                                 </div>
                             )}
                         </div>
-                        <img src="/home.gif" alt="home" onClick={() => { navigate('/') }} className='md:w-9 w-7 cursor-pointer ' />
+                        <img loading="lazy"  src="/home.gif" alt="home" onClick={() => { navigate('/') }} className='md:w-9 w-7 cursor-pointer ' />
                     </div>
 
                     {/* chat box */}
@@ -267,7 +267,7 @@ function Chat() {
                                         {item.sender === receiver ? (
                                             <>
                                                 {/* Receiver message*/}
-                                                <img src="/avatar3.gif" alt="avatar" className="lg:h-8 h-6 border rounded-full bg-black" />
+                                                <img loading="lazy"  src="/avatar3.gif" alt="avatar" className="lg:h-8 h-6 border rounded-full bg-black" />
                                                 <div className={`rounded-lg bg-[#2466fd] px-3 py-1 relative flex ${item.content.length > 20 ? 'flex-col gap-0' : 'flex-row gap-2'
                                                     } max-h-[220px] max-w-[80%]`}>
                                                     <p className="text-white break-words max-h-[200px] overflow-y-auto scrollbar-rounded2 py-1.5">
@@ -275,7 +275,7 @@ function Chat() {
                                                     </p>
                                                     <span className="text-[9px] md:text-[11px] text-gray-300 self-end items-center gap-1 flex">
                                                         <p>{convertToTime(item.timestamp)}</p>
-                                                        <img src={item.isSeen ? '/seen.png' : '/unseen.png'} alt="tick" className='h-3 invert' />
+                                                        <img loading="lazy"  src={item.isSeen ? '/seen.png' : '/unseen.png'} alt="tick" className='h-3 invert' />
                                                     </span>
                                                 </div>
                                             </>
@@ -289,10 +289,10 @@ function Chat() {
                                                     </p>
                                                     <span className="text-[9px] md:text-[11px] text-gray-300 flex gap-1 items-center  self-end ">
                                                         <p>{convertToTime(item.timestamp)}</p>
-                                                        <img src={item.isSeen ? '/seen.png' : '/unseen.png'} alt="tick" className='h-3 invert' />
+                                                        <img loading="lazy"  src={item.isSeen ? '/seen.png' : '/unseen.png'} alt="tick" className='h-3 invert' />
                                                     </span>
                                                 </div>
-                                                <img src="/avatar3.gif" alt="avatar" className="lg:h-8 h-6 border rounded-full bg-black" />
+                                                <img loading="lazy"  src="/avatar3.gif" alt="avatar" className="lg:h-8 h-6 border rounded-full bg-black" />
                                             </>
                                         )}
                                     </div>
@@ -308,7 +308,7 @@ function Chat() {
                         <form onSubmit={formSubmit} className={`border rounded-full w-[90%] md:w-[80%] h-1/2 relative flex items-center  justify-between ${receiver == null ? 'border-black' : 'bg-[#18171d]'}`} >
                             <input type="text" name='message' value={formInfo.message || ''} onChange={inputChange} disabled={receiver == null} placeholder='Type message...' className={`bg-transparent text-white  outline-none relative h-full w-full rounded-l-full px-4 ${receiver == null ? 'placeholder:text-black' : 'placeholder:text-white'}`} />
                             <button disabled={receiver == null} type='submit' className='px-2 md:px-8'>
-                                <img src="/send.gif" alt="send" className={`${receiver == null ? '' : 'invert'} h-8 w-8 `} />
+                                <img loading="lazy"  src="/send.gif" alt="send" className={`${receiver == null ? '' : 'invert'} h-8 w-8 `} />
                             </button>
                         </form>
                     </div>

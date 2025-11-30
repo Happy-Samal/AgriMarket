@@ -18,7 +18,7 @@ function OrderConfirmImg() {
             <div className="bg-white min-h-[100vh]">
                 <div className="bg-url2"></div>
                 <span className=" flex gap-2 text-center text-green-500 -mt-20 items-center justify-center">
-                    <img src="confirmTick.jpg" alt="tick" className='md:w-9 w-6' />
+                    <img loading="lazy"  src="confirmTick.jpg" alt="tick" className='md:w-9 w-6' />
                     <h3 className="md:text-[35px] text-[21px]"> Order Successfully Placed.</h3>
                 </span>
                 <div className='w-full h-[3px] mt-5 bg-gray-300'></div>

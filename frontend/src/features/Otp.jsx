@@ -50,7 +50,7 @@ function Otp() {
         <div className='lg:min-h-[100vh] min-h-[65vh] lg:w-2/4 w-full bg-[#16520f] lg:pt-8 pt-0 relative overflow-hidden'>
           <div className='overflow-hidden  shadow-[0_0_40px_#000000] absolute right-0 lg:h-[80vh] h-[65vh] w-full lg:w-[70%]  flex items-center justify-center bg-[#16520f] bg-opacity-60 lg:rounded-l-2xl'>
 
-            <img src="/fruits2.jpg" alt="" className='h-full w-full object-cover opacity-30' />
+            <img loading="lazy"  src="/fruits2.jpg" alt="" className='h-full w-full object-cover opacity-30' />
 
             {/* text over video */}
             <div className='text-white absolute'>
@@ -64,10 +64,10 @@ function Otp() {
         <div className='lg:min-h-[100vh] min-h-[70vh] w-full bg-white pt-8'>
           {/* login */}
           <div className='overflow-hidden  shadow-[0_0_40px_#000000] absolute lg:w-[48%] w-full  lg:h-[80vh] h-[70vh]  bg-white px-6 lg:px-16 py-10 text-black lg:rounded-r-2xl'>
-            {sending && <div className='absolute bg-black bg-opacity-35 h-full w-full left-0 top-0 flex justify-center items-center'> <img src="/emailSend.gif" alt="sending..." className='w-[120px] h-[120px] ' /></div>}
+            {sending && <div className='absolute bg-black bg-opacity-35 h-full w-full left-0 top-0 flex justify-center items-center'> <img loading="lazy"  src="/emailSend.gif" alt="sending..." className='w-[120px] h-[120px] ' /></div>}
 
             <form onSubmit={handleSubmit} className='flex flex-col gap-10 md:gap-16'>
-              <img src="/cross.gif" alt="cross" onClick={() => navigate('/')} className='absolute top-2 right-2 w-8 md:w-10 cursor-pointer' />
+              <img loading="lazy"  src="/cross.gif" alt="cross" onClick={() => navigate('/')} className='absolute top-2 right-2 w-8 md:w-10 cursor-pointer' />
               <div className='text-center'>
                 <h3 className='font-semibold text-[24px] md:text-[34px] text-green-500 '>Verification</h3>
                 <h5>We will send you OTP on your email</h5>

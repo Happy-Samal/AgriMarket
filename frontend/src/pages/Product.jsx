@@ -120,32 +120,32 @@ function Product() {
 
       {loading ? <div className='flex bg-white mt-8 p-10 md:p-20 items-center justify-center relative min-h-[80vh]'>
         <div className="flex justify-center items-center absolute inset-0">
-          <img src="/loading.gif" alt="loading" className='w-16 md:w-20' />
+          <img loading="lazy"  src="/loading.gif" alt="loading" className='w-16 md:w-20' />
         </div>
       </div> :
         Object.keys(item).length === 0 ? <div className='flex min-h-[80vh] bg-white mt-8 p-10 md:p-20 items-center justify-center font-bold md:text-lg text-[12px]'>You're looking for the product is not available 😑</div> :
           <div className='flex flex-col md:flex-row'>
             <div className='md:min-h-[60vh] lg:w-2/4 md:w-3/4 w-full bg-[#16520f] flex pt-8 relative justify-center'>
               <div className='flex flex-col gap-8 p-4  items-center lg:left-[7%] md:left-[8%] md:top-40 md:sticky md:rounded-l-2xl shadow-[0_0_40px_#000000] lg:h-[60%] h-[50%] w-[80%] bg-white text-white relative'>
-                <img src={item?.img} alt="productImg" className='lg:w-[360px]  lg:h-[300px] w-[260px] h-[200px] overflow-hidden' />
+                <img loading="lazy"  src={item?.img} alt="productImg" className='lg:w-[360px]  lg:h-[300px] w-[260px] h-[200px] overflow-hidden' />
                 <button disabled={loader2} onClick={() => { WishlistBtnClick(wishlistInfo?._id) }} className='cursor-pointer absolute top-6 right-6 text-[20px] bg-white rounded-full h-8 w-8 justify-center items-center flex'>
                 {loader2 ? 
-                    <img src="/loader.gif" alt="loading" className='w-3 md:w-4 ' /> :
+                    <img loading="lazy"  src="/loader.gif" alt="loading" className='w-3 md:w-4 ' /> :
                     wishlistInfo?.isWishlist ? "❤️" : "🤍"
                     }
                 </button>
                 <div className='flex w-full justify-around gap-3 md:gap-5'>
                   <button disabled={loader} onClick={() => { cartBtnClick() }} className='flex gap-2 items-center bg-green-500 text-[9px] lg:text-[14px]  lg:px-5 py-1 px-2 rounded-md cursor-pointer relative justify-center w-1/2 min-h-10'>
                     {loader ? 
-                    <img src="/loader.gif" alt="loading" className='w-5 md:w-6 ' /> :
+                    <img loading="lazy"  src="/loader.gif" alt="loading" className='w-5 md:w-6 ' /> :
                     <>
-                    <img src="/addToCart.gif" alt="cart" className='lg:w-8 w-6 invert' />
+                    <img loading="lazy"  src="/addToCart.gif" alt="cart" className='lg:w-8 w-6 invert' />
                     <span>ADD TO CART</span>
                     </>
                     }
                   </button>
                   <button onClick={() => { buyBtnClick() }} className='flex gap-2 items-center bg-green-500 text-[10px] lg:text-[14px] lg:px-5 py-1 px-2 rounded-md cursor-pointer relative  justify-center w-1/2 min-h-10'>
-                    <img src="/buy.gif" alt="buy" className='lg:w-6 w-4 invert' />
+                    <img loading="lazy"  src="/buy.gif" alt="buy" className='lg:w-6 w-4 invert' />
                     <span>BUY NOW</span>
                   </button>
                 </div>
@@ -168,7 +168,7 @@ function Product() {
               <div className='flex flex-col gap-1'>
                 <span className='text-green-600 font-semibold lg:text-[18px] text-[14px]'>chat with farmer</span>
                 <div className='flex gap-2  px-2 items-center lg:w-[200px] w-[150px] border-2 rounded-md cursor-pointer' onClick={() => { contactFarmer() }}>
-                  <img src="/avatar2.gif" alt="profile" className='w-6 lg:w-8' />
+                  <img loading="lazy"  src="/avatar2.gif" alt="profile" className='w-6 lg:w-8' />
                   <span className='lg:text-[14px] text-[12px]'>{item?.farmer?.username}</span>
                 </div>
               </div>

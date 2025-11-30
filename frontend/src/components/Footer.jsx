@@ -23,16 +23,16 @@ function Footer() {
           <span>Follow Me On</span>
           <div className='flex gap-4'>
             <a href="https://www.instagram.com/rudrasamal_/" target="_blank" rel="noopener noreferrer">
-              <img src="/insta.gif" alt="insta" className='w-[25px] h-[25px]' />
+              <img loading="lazy"  src="/insta.gif" alt="insta" className='w-[25px] h-[25px]' />
             </a>
             <a href="https://www.facebook.com/samalrudra.rudra" target="_blank" rel="noopener noreferrer">
-              <img src="/facebook.gif" alt="facebook" className='w-[25px] h-[25px]' />
+              <img loading="lazy"  src="/facebook.gif" alt="facebook" className='w-[25px] h-[25px]' />
             </a>
             <a href="https://www.linkedin.com/in/happy-samal" target="_blank" rel="noopener noreferrer">
-              <img src="/linkedin.gif" alt="linkedin" className='w-[25px] h-[25px]' />
+              <img loading="lazy"  src="/linkedin.gif" alt="linkedin" className='w-[25px] h-[25px]' />
             </a>
             <a href="https://github.com/Happy-Samal" target="_blank" rel="noopener noreferrer">
-              <img src="/github.gif" alt="github" className='w-[25px] h-[25px]' />
+              <img loading="lazy"  src="/github.gif" alt="github" className='w-[25px] h-[25px]' />
             </a>
           </div>
         </div>

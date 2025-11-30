@@ -48,7 +48,7 @@ function YourProduct() {
   return (
     <>
       {loading && <div className='h-full w-full absolute left-0 top-0 z-20 md:pt-64 pt-44  font-bold text-[24px] flex items-center text-white bg-black bg-opacity-80 flex-col '>
-        <img src="/loading.gif" alt="sending" className='w-[70px]' />
+        <img loading="lazy"  src="/loading.gif" alt="sending" className='w-[70px]' />
       </div>}
 
 
@@ -58,7 +58,7 @@ function YourProduct() {
 
         <button onClick={() => { addBtnClick() }} className='border rounded-md bg-white text-green-500 py-1 w-[220px] flex gap-2 items-center md:text-[18px] text-[16px] justify-center'>
           <span>add product</span>
-          <img src="/add.gif" alt="add" className='w-3 md:w-4' />
+          <img loading="lazy"  src="/add.gif" alt="add" className='w-3 md:w-4' />
         </button>
 
 
@@ -67,9 +67,9 @@ function YourProduct() {
           {productData.map((item) => {
             return <div key={item._id}  className='flex gap-2 lg:gap-3  flex-wrap justify-center '>
               <div className='h-[340px] w-[230px] relative bg-white text-black border rounded-md flex flex-col p-2 '>
-                <img src="/delete.gif" alt="delete" onClick={() => { deleteItem(item._id) }} className='absolute top-28 right-2 w-6 md:w-8 z-10  cursor-pointer' />
-                <img src="/edit.gif" alt="delete" onClick={() => { editItem(item) }} className='absolute bottom-2 right-2 w-6 md:w-6 z-10  cursor-pointer' />
-                <img src={item?.img || ''} alt="product" onClick={()=>{navigate(`/product?pId=${item._id}&pCgy=${item.category}&pName=${item.name}`)}}  className='object-cover  w-full h-[50%] relative overflow-hidden cursor-pointer duration-300 ease-in-out hover:scale-105' />
+                <img loading="lazy"  src="/delete.gif" alt="delete" onClick={() => { deleteItem(item._id) }} className='absolute top-28 right-2 w-6 md:w-8 z-10  cursor-pointer' />
+                <img loading="lazy"  src="/edit.gif" alt="delete" onClick={() => { editItem(item) }} className='absolute bottom-2 right-2 w-6 md:w-6 z-10  cursor-pointer' />
+                <img loading="lazy"  src={item?.img || ''} alt="product" onClick={()=>{navigate(`/product?pId=${item._id}&pCgy=${item.category}&pName=${item.name}`)}}  className='object-cover  w-full h-[50%] relative overflow-hidden cursor-pointer duration-300 ease-in-out hover:scale-105' />
                 <span className='flex flex-col gap-1'>
                   <h1>product ID:</h1>
                   <p className='bg-black w-[88%] text-white text-[14px]'>{item?._id}</p>

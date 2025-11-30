@@ -95,14 +95,14 @@ function Cart() {
           {cartInfo?.length == 0 && <span className='font-semibold'>No items to display</span>}
           {loading && (
             <div className="flex justify-center items-center absolute inset-0">
-              <img src="/loading.gif" alt="loading" className='w-8 md:w-12' />
+              <img loading="lazy"  src="/loading.gif" alt="loading" className='w-8 md:w-12' />
             </div>
           )}
           {/* Cart Item */}
           {cartInfo?.map((item) => {
             return <div key={item._id} className="border-b-2 pb-4 flex flex-col gap-2   ">
               <div className="flex gap-4">
-                <img src={item.product?.img} alt="product" onClick={() => { itemClick(item.product) }} className="h-24 w-24 rounded-md object-cover cursor-pointer duration-300 ease-in-out hover:scale-105" />
+                <img loading="lazy"  src={item.product?.img} alt="product" onClick={() => { itemClick(item.product) }} className="h-24 w-24 rounded-md object-cover cursor-pointer duration-300 ease-in-out hover:scale-105" />
                 <div className="flex flex-col gap-2">
                   <h2 onClick={() => { itemClick(item.product) }} className=" lg:text-lg text-sm font-semibold  text-wrap h-[60px] overflow-hidden cursor-pointer hover:text-green-500">{item.product?.name}, {item.product?.description}</h2>
                   <span className="text-gray-500 lg:text-[14px] text-[12px]">
@@ -154,7 +154,7 @@ function Cart() {
             </div>
             <button disabled={loader} onClick={() => { placeOrderClick() }} className="bg-green-500 text-white font-semibold py-2 rounded-md w-full flex justify-center items-center">
             {loader ? 
-                    <img src="/loader.gif" alt="loading" className='w-5 md:w-6 ' /> :
+                    <img loading="lazy"  src="/loader.gif" alt="loading" className='w-5 md:w-6 ' /> :
                     <span>Place Order</span>
                     }
             </button>

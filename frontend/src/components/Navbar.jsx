@@ -39,7 +39,7 @@ function Navbar() {
           {/* logo */}
           <div>
             <Link to={'/'} className='cursor-pointer'>
-              <img src="/agrimarket.png" alt="logo" className='h-12 md:h-16' />
+              <img loading="lazy"  src="/agrimarket.png" alt="logo" className='h-12 md:h-16' />
             </Link>
           </div>
 
@@ -54,7 +54,7 @@ function Navbar() {
             {(LoginUser?.success && LoginUser?.user?.role == 'farmer') &&
               <Link to={`farmer/dashboard?id=${LoginUser?.user?._id}`}>
                 <button className='flex items-center gap-1'>
-                  <img src="/store.gif" alt="avatar" className='h-[14px] md:h-[22px] invert' />
+                  <img loading="lazy"  src="/store.gif" alt="avatar" className='h-[14px] md:h-[22px] invert' />
                   <p className='text-[9px] md:text-[16px] '>Dashboard</p>
                 </button>
               </Link>
@@ -65,7 +65,7 @@ function Navbar() {
             <Link to={LoginUser?.success ? `customer/profile?id=${LoginUser?.user?._id}` : '/user/login'}>
               <button className='flex items-center gap-1'>
                 <div className='border rounded-full overflow-hidden h-[14px] md:h-[22px]  items-center justify-center flex border-[#0a7127] bg-white' >
-                  <img src="/avatar1.gif" alt="avatar" className='h-[14px] md:h-[22px]' />
+                  <img loading="lazy"  src="/avatar1.gif" alt="avatar" className='h-[14px] md:h-[22px]' />
                 </div>
                 <p className='text-start w-[40px] md:w-[60px] text-[9px] md:text-[16px] overflow-hidden whitespace-nowrap text-ellipsis '>{LoginUser?.success ? `${LoginUser?.user?.username?.split(' ')[0]}` : "Login"}</p>
               </button>
@@ -73,14 +73,14 @@ function Navbar() {
 
             {/* Cart */}
             <Link to={LoginUser?.success ? `/user/cart?id=${LoginUser?.user?._id}` : '/user/login'}><button className='relative '>
-              <img src="/cart.gif" alt="cart" className='h-[26px] md:h-[42px]  invert' />
+              <img loading="lazy"  src="/cart.gif" alt="cart" className='h-[26px] md:h-[42px]  invert' />
               <span className='w-2 h-2 md:h-3 md:w-3 md:text-[8px] text-[6px] absolute rounded-full bg-red-500 text-white top-1 right-1'>{cartInfo?.length}</span>
             </button>
             </Link>
 
             {/* chat */}
             <Link to={LoginUser?.success ? `/chat?sender=${LoginUser?.user?._id}` : '/user/login'}><button className='relative flex items-center '>
-              <img src="/chat.gif" alt="chat" className='h-[18px] md:h-[28px] invert ' />
+              <img loading="lazy"  src="/chat.gif" alt="chat" className='h-[18px] md:h-[28px] invert ' />
               {notification > 0 ? <span className='w-2 h-2 md:h-3 md:w-3 md:text-[8px] text-[6px] absolute rounded-full bg-red-500 text-white md:-top-1.5 -top-0.5 right-0'>{notification}</span> : ''}
             </button>
             </Link>
